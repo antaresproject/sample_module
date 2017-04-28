@@ -61,4 +61,16 @@ class ItemsBreadcrumb extends Navigation
         $this->shareOnView('item');
     }
 
+    /**
+     * On module configuration
+     */
+    public function onConfiguration()
+    {
+        $this->breadcrumbs->register('sample-module-configuration', function($breadcrumbs) {
+            $breadcrumbs->push('Sample module configuration');
+        });
+
+        $this->shareOnView('sample-module-configuration');
+    }
+
 }

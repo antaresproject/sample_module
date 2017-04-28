@@ -23,9 +23,11 @@ namespace Antares\SampleModule;
 use Antares\Foundation\Support\Providers\ModuleServiceProvider;
 use Antares\SampleModule\Http\Handler\ModuleBreadcrumbMenu;
 use Antares\SampleModule\Http\Handler\ModuleMainMenu;
+use Antares\SampleModule\Http\Handler\ModulePaneMenu;
 use Antares\SampleModule\Console\UpProcessesCommand;
 use Antares\SampleModule\Console\ModuleCommand;
 use Antares\SampleModule\Console\ResetCommand;
+use Antares\Control\Http\Handlers\ControlPane;
 
 class SampleModuleServiceProvider extends ModuleServiceProvider
 {
@@ -73,8 +75,9 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
         $this->addLanguageComponent('antares/sample_module', 'antares/sample_module', "{$path}/lang");
         $this->addViewComponent('antares/sample_module', 'antares/sample_module', "{$path}/views");
         $this->attachMenu(ModuleBreadcrumbMenu::class);
-        //$this->bootMemory();
-        listen('datatables:admin/users/index:after.id', function($datatables) {
+        $this->bootMemory();
+
+        listen('datatables:admin/users/index:after.status', function($datatables) {
             if ($datatables instanceof \Antares\Datatables\Html\Builder) {
                 $datatables->collection->push(new \Yajra\Datatables\Html\Column([
                     'data'  => 'sample_module',
@@ -93,9 +96,23 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
                 if (!$model instanceof \Antares\Model\User) {
                     return;
                 }
-                $entity = Model\ModuleRow::query()->where('user_id', $model->id)->first();
-                return defaults($entity, 'name');
+                return Model\ModuleRow::query()->where('user_id', $model->id)->count();
             });
+        });
+        view()->composer('antares/sample_module::admin.configuration', ControlPane::class);
+        listen('antares.ready: menu.after.general-settings', ModulePaneMenu::class);
+        listen('breadcrumb.before.render.user-view', function($menu) {
+            $attributes = $menu->getAttributes();
+            $childs     = [
+                'sample-module-user' => new \Antares\Support\Fluent([
+                    "icon"   => 'zmdi-plus',
+                    "link"   => handles('antares::sample_module/index/create'),
+                    "title"  => 'Add Item (Sample Module)',
+                    "id"     => 'sample-module-add',
+                    "childs" => []])
+            ];
+            array_set($attributes, 'childs', array_merge($childs, $attributes['childs']));
+            $menu->offsetSet('attributes', $attributes);
         });
     }
 

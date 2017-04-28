@@ -38,8 +38,8 @@ class OrdersWidget extends AbstractWidget
      * @var array
      */
     protected $attributes = [
-        'min_width'      => 6,
-        'min_height'     => 7,
+        'min_width'      => 1,
+        'min_height'     => 1,
         'max_width'      => 14,
         'max_height'     => 20,
         'default_width'  => 6,

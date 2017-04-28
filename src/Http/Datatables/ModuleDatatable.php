@@ -21,9 +21,11 @@
 namespace Antares\SampleModule\Http\Datatables;
 
 use Antares\SampleModule\Processor\ModuleProcessor;
+use Antares\Customfields\Filter\SecondOptionFilter;
+use Antares\Customfields\Filter\FirstOptionFilter;
 use Antares\Datatables\Services\DataTable;
-use Illuminate\Support\Facades\Event;
 use Antares\SampleModule\Model\ModuleRow;
+use Illuminate\Support\Facades\Event;
 use Antares\Support\Facades\HTML;
 
 class ModuleDatatable extends DataTable
@@ -47,6 +49,16 @@ class ModuleDatatable extends DataTable
     ];
 
     /**
+     * Datatable filters
+     *
+     * @var array
+     */
+    protected $filters = [
+        FirstOptionFilter::class,
+        SecondOptionFilter::class,
+    ];
+
+    /**
      * Zapytanie na podstawie którego generowane są dane w tabeli (dataprovider)
      * 
      * @return \Illuminate\Database\Eloquent\Builder
@@ -56,7 +68,9 @@ class ModuleDatatable extends DataTable
         if (!auth()->guest() && auth()->user()->hasRoles('member')) {
             $this->userId = auth()->user()->id;
         }
+
         $query = ModuleRow::withoutGlobalScopes()->select(['id', 'name', 'user_id', 'value'])->with('user');
+
         if (!is_null($this->userId)) {
             $query->where('user_id', $this->userId);
         }
@@ -185,7 +199,23 @@ class ModuleDatatable extends DataTable
                         ->addColumn(['data' => 'field_2', 'name' => 'field_2', 'title' => trans('antares/sample_module::datagrid.header.field_2')])
                         ->addAction(['name' => 'edit', 'title' => '', 'class' => 'mass-actions dt-actions'])
                         ->ajax(is_null($url) ? handles('antares::sample_module/index') : $url)
+                        ->addGroupSelect($this->users(), 2, 1)
                         ->setDeferedData();
+    }
+
+    /**
+     * Creates select for statuses
+     *
+     * @return String
+     */
+    protected function users()
+    {
+        $rows   = \Antares\SampleModule\Model\ModuleRow::query()->groupBy('user_id')->with('user')->get();
+        $return = ['' => trans('antares/users::messages.statuses.all')];
+        foreach ($rows as $row) {
+            $return[$row->user_id] = $row->user->fullname;
+        }
+        return $return;
     }
 
     /**

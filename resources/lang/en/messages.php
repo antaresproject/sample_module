@@ -19,6 +19,20 @@
  */
 return
         [
+            'configuration'             => [
+                'labels'       => [
+                    'name'        => 'Name',
+                    'url'         => 'Url',
+                    'checkbox'    => 'Checkbox',
+                    'date_format' => 'Date format',
+                    'country'     => 'Country',
+                    'description' => 'Description'
+                ],
+                'placeholders' => [
+                    'name' => 'entity name...',
+                    'url'  => 'entity url...',
+                ]
+            ],
             'title'                     => 'Sample module',
             'user_updated'              => 'User has been updated.',
             'delete'                    => 'Delete',

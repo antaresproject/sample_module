@@ -60,15 +60,7 @@ class ModuleSampleDataSeeder extends Seeder
      */
     public function down()
     {
-        try {
-            DB::table('tbl_custom_module')->delete();
-            $widgetParamsSchemaPath = __DIR__ . '/schemas/default_widget_params.sql';
-            if (file_exists($widgetParamsSchemaPath)) {
-                DB::unprepared(file_get_contents($widgetParamsSchemaPath));
-            }
-        } catch (Exception $ex) {
-            
-        }
+        
     }
 
 }

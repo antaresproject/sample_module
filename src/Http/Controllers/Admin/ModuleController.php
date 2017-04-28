@@ -94,4 +94,23 @@ class ModuleController extends AdminController
         return $this->processor->delete($id);
     }
 
+    public function configuration(\Antares\SampleModule\Http\Breadcrumb\ItemsBreadcrumb $breadcrumb)
+    {
+        $memory        = app('antares.memory')->make('primary');
+        $configuration = $memory->get('sample_module');
+        $model         = new \Illuminate\Support\Fluent($configuration ?? []);
+        $form          = new \Antares\SampleModule\Http\Form\Configuration($model);
+        if (request()->isMethod('post')) {
+            if (!$form->isValid()) {
+                return redirect_with_errors(url()->previous(), $form->getMessageBag());
+            }
+            $memory->put('sample_module', $form->getData());
+            $memory->finish();
+            return redirect_with_message(url()->previous(), trans('antares/sample_module::messages.configuration_has_been_saved'));
+        }
+
+        $breadcrumb->onConfiguration();
+        return view('antares/sample_module::admin.configuration', compact('form'));
+    }
+
 }
