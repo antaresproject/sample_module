@@ -1,0 +1,50 @@
+<div class="card card--chart card--scrollbox" data-chart="true">
+    <div class="card__left">
+        <div class="card__header">
+            <div class="card__header-left">
+                <span>Number Of Users</span>
+            </div>
+            <div class="card__header-right">
+                <form action="" method="post">
+                    <input data-daterangepicker="true" class="mr24">
+                    <input type="checkbox" data-icheck="true" name="check[1]" id="check[4]">
+                    <label class="ml8" for="check[4]">Compare</label>
+                </form>
+            </div>
+        </div>
+        <div class="card__content card__content--chart">
+            <div class="chart" id="chart--four">
+                <svg class="lineChart--svg"></svg>
+            </div>
+        </div>
+    </div>
+    <div class="card__right">
+        {% set totalFirst=0 %}
+        {% set totalSecond=0 %}
+        {% for name,item in data %}
+            {% set totalFirst=totalFirst+item[0] %}
+            {% set totalSecond=totalSecond+item[1] %}
+        {% endfor %}  
+        <header>
+            <span class="card__title">Total</span>
+            <span class="card__indicator card__indicator--down compare">{{ ((totalFirst*100)/totalSecond)|number_format(2, '.', ',')  }}%<i class="zmdi zmdi-long-arrow-down"></i></span>
+            <span class="card__ammount"><strong>{{ totalFirst }}</strong><span class="compare"> / {{ totalSecond }}</span></span>
+            <div class="card__mobile-toggle mdl-js-button mdl-js-ripple-effect">
+                <i class="zmdi zmdi-caret-down"></i>
+            </div>
+        </header>
+        <ul class="datarow">
+            {% for name,item in data %}
+                <li class="datarow__sgl datarow__sgl--down">
+                    <div class="datarow__left">
+                        <span class="datarow__status">{{ name|str_humanize }}</span>
+                    </div>
+                    <div class="datarow__right">
+                        <span class="datarow__data"><strong>{{ item[0] }}</strong><span class="compare">/{{ item[1] }}</span></span>
+                        <span class="datarow__percentage compare"><span>{{ ((item[0]*100)/item[1])|number_format(2, '.', ',')  }}%</span><i class="zmdi zmdi-long-arrow-down"></i></span>
+                    </div>
+                </li>
+            {% endfor %} 
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+{% extends 'antares/widgets::templates.layouts.template' %}
+{% block content %}
+    {{ dataTable.scripts()|raw }}
+    {{ dataTable.tableDeferred()|raw }}
+{% endblock %}

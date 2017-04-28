@@ -1,0 +1,21 @@
+<div class="type--contact flex-block">
+    <div class="avatar avatar--active avatar--xs">
+        {% if user_id %}
+            <img width="40" height="40"  src="{{ profile_picture(user.email) }}" />
+        {% else %}
+            <img width="40" height="40"  src="{{ profile_picture('default') }}" />
+        {% endif %}
+        <div></div>         
+    </div>
+    <div class="flex-block__content">
+        <span class="flex-block__title">{{ id|raw }} {{ name|slice(0, 30) ~ '...'|raw  }}</span>
+        {% if user_id %}
+            <div class="flex-block__desc">#{{ user_id }}, {{ user.fullname|raw }}</div>
+        {% endif %}
+    </div>
+    <div class="flex-block__badge">
+        {% if user_id %}
+            {{ user_status(user)|raw }}
+        {% endif %}
+    </div>
+</div>

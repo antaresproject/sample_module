@@ -1,0 +1,25 @@
+{
+    "name": "antaresproject/module-sample",
+    "description": "Sample Antares Module",
+    "type": "antaresproject-component",
+    "version": "0.9.2.1",
+    "homepage": "https://github.com/antaresproject/sample_module",
+    "authors": [
+        {
+            "name": "Łukasz Cirut",
+            "email": "contact@antaresproject.io"
+        }
+    ],
+    "require": {
+        "antaresproject/component-installer-plugin": "*",
+        "php": ">=7.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Antares\\SampleModule\\": "src/"
+        }
+    },
+    "extra": {
+        "friendly-name": "Sample Module"
+    }
+}
