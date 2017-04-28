@@ -1,5 +1,5 @@
 {
-    "name": "antaresproject/module-sample",
+    "name": "antaresproject/sample_module",
     "description": "Sample Antares Module",
     "type": "antaresproject-component",
     "version": "0.9.2.1",
