@@ -73,7 +73,7 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
         $this->addLanguageComponent('antares/sample_module', 'antares/sample_module', "{$path}/lang");
         $this->addViewComponent('antares/sample_module', 'antares/sample_module', "{$path}/views");
         $this->attachMenu(ModuleBreadcrumbMenu::class);
-        $this->bootMemory();
+        //$this->bootMemory();
         listen('datatables:admin/users/index:after.id', function($datatables) {
             if ($datatables instanceof \Antares\Datatables\Html\Builder) {
                 $datatables->collection->push(new \Yajra\Datatables\Html\Column([

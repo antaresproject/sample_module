@@ -52,6 +52,8 @@ class ModuleMainMenu extends MenuHandler
      */
     public function authorize()
     {
+//        vdump(app('antares.acl')->make('sample_module'));
+//        exit;
         return app('antares.acl')->make('antares/sample_module')->can('index-action');
     }
 
