@@ -76,4 +76,14 @@ class ModuleRow extends Eloquent
         return handles('antares::sample_module/index/{id}/edit');
     }
 
+    /**
+     * Get basic items data
+     * 
+     * @return Collection
+     */
+    public function items()
+    {
+        return $this->get(['id', 'name']);
+    }
+
 }

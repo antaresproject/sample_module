@@ -20,7 +20,7 @@
 use Antares\Notifier\Seeder\NotificationSeeder;
 use Illuminate\Support\Facades\DB;
 
-class ModuleSmsNotifications extends NotificationSeeder
+class ModuleEmailNotification extends NotificationSeeder
 {
 
     /**
@@ -30,18 +30,18 @@ class ModuleSmsNotifications extends NotificationSeeder
      */
     public function run()
     {
-
         DB::beginTransaction();
         try {
             $this->down();
             $this->addNotification([
                 'category' => 'default',
                 'severity' => 'high',
-                'event'    => 'sms.module_sms_notification',
+                'type'     => 'email',
+                'event'    => 'email.sample-module-notification',
                 'contents' => [
                     'en' => [
-                        'title'   => 'Sms notification send test',
-                        'content' => 'Sms notification send test.'
+                        'title'   => 'Sample Email Template',
+                        'content' => file_get_contents(__DIR__ . '/../../views/notification/module_sample_notification.twig')
                     ],
                 ]
             ]);
@@ -61,7 +61,7 @@ class ModuleSmsNotifications extends NotificationSeeder
     public function down()
     {
         return $this->deleteNotificationByEventName([
-                    'sms.module_sms_notification',
+                    'email.sample-module-notification',
         ]);
     }
 

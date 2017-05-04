@@ -24,9 +24,7 @@ use Antares\Foundation\Support\Providers\ModuleServiceProvider;
 use Antares\SampleModule\Http\Handler\ModuleBreadcrumbMenu;
 use Antares\SampleModule\Http\Handler\ModuleMainMenu;
 use Antares\SampleModule\Http\Handler\ModulePaneMenu;
-use Antares\SampleModule\Console\UpProcessesCommand;
 use Antares\SampleModule\Console\ModuleCommand;
-use Antares\SampleModule\Console\ResetCommand;
 use Antares\Control\Http\Handlers\ControlPane;
 
 class SampleModuleServiceProvider extends ModuleServiceProvider
@@ -61,7 +59,7 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
     public function register()
     {
         parent::register();
-        $this->commands([ModuleCommand::class, ResetCommand::class, UpProcessesCommand::class]);
+        $this->commands([ModuleCommand::class]);
     }
 
     /**
@@ -113,6 +111,18 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
             ];
             array_set($attributes, 'childs', array_merge($childs, $attributes['childs']));
             $menu->offsetSet('attributes', $attributes);
+        });
+        $this->app->make('antares.notifications')->push([
+            'antaresproject/component-sample_module' => [
+                'variables' => [
+                    'items' => [
+                        'dataProvider' => 'Antares\SampleModule\Model\ModuleRow@items'
+                    ],
+                ]
+            ]
+        ]);
+        listen('after.activated.antaresproject/component-sample_module', function() {
+            \Illuminate\Support\Facades\Artisan::call('automation:sync');
         });
     }
 

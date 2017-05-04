@@ -26,11 +26,25 @@ class ModuleCommand extends Command
 {
 
     /**
+     * The console command name.
+     *
+     * @var string
+     */
+    protected $name = 'module:run';
+
+    /**
      * human readable command name
      *
      * @var String
      */
-    protected $title = 'Sample Automation Job';
+    protected $title = 'Email Notification Command';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Sample module automation job';
 
     /**
      * when command should be executed
@@ -53,25 +67,8 @@ class ModuleCommand extends Command
      */
     protected $availableLaunches = [
         'everyFiveMinutes',
-        'everyTenMinutes',
-        'everyThirtyMinutes',
-        'hourly',
         'daily'
     ];
-
-    /**
-     * The console command name.
-     *
-     * @var string
-     */
-    protected $name = 'module:run';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Sample module automation job';
 
     /**
      * Execute the console command.
@@ -80,6 +77,8 @@ class ModuleCommand extends Command
      */
     public function handle()
     {
+        $this->line('Automation job for sample module started.');
+        event('email.sample-module-notification', ['variables' => ['user' => users('super-administrator')->first()]]);
         $this->line('Automation job for sample module completed.');
     }
 

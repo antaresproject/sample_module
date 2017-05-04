@@ -62,16 +62,18 @@ class Configuration extends FormBuilder implements Presenter
 
                     $fieldset->control('input:text', 'name')
                             ->label(trans('antares/sample_module::messages.configuration.labels.name'))
-                            ->attributes(['placeholder' => trans('antares/sample_module::messages.configuration.placeholders.name')]);
+                            ->attributes(['placeholder' => trans('antares/sample_module::messages.configuration.placeholders.name')])
+                            ->wrapper(['class' => 'w300']);
 
                     $fieldset->control('input:text', 'url')
                             ->label(trans('antares/sample_module::messages.configuration.labels.url'))
                             ->attributes(['placeholder' => trans('antares/sample_module::messages.configuration.placeholders.url')])
                             ->fieldClass('input-field--group input-field--pre')
-                            ->before('<div class="input-field__pre"><span>' . (request()->secure() ? 'https://' : 'http://') . '</span></div>');
+                            ->before('<div class="input-field__pre"><span>' . (request()->secure() ? 'https://' : 'http://') . '</span></div>')
+                            ->wrapper(['class' => 'w400']);
 
                     $fieldset->control('select', 'date_format')
-                            ->wrapper(['class' => 'w220'])
+                            ->wrapper(['class' => 'w180'])
                             ->label(trans('antares/sample_module::messages.configuration.labels.date_format'))
                             ->options(function() {
                                 return app(DateFormat::class)->query()->get()->pluck('format', 'id');
