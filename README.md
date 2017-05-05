@@ -18,7 +18,7 @@ Full Antares Project documentation can be found at [antaresproject.io/docs](http
 
 ## Changelog
 
-Antares Project Application Skeleton changelog can be found in release notes [antaresproject.io/docs/site/getting_started/changelog](http://antaresproject.io/docs/site/getting_started/changelog/index.html).
+Antares Project Application Skeleton changelog can be found in release notes [antaresproject.io/docs/site/getting_started/changelog#sample_module](http://antaresproject.io/docs/site/getting_started/changelog/index.html#sample_module).
 
 You can find full Antares Project changelog in Antares Project Documentation [antaresproject.io/docs/site/getting_started/changelog](http://antaresproject.io/docs/site/getting_started/changelog/index.html).
 
