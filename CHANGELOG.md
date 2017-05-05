@@ -1,11 +1,20 @@
-# Change Log
+# Changelog
 
-This project follows [Semantic Versioning](CONTRIBUTING.md).
+### [0.9.2]
 
-## Proposals
+##### New
 
-We do not give estimated times for completion on `Accepted` Proposals.
+* Sample more email notification template, notification seeder and automation.
+* Sample datatables and events.
+* Initial commit.
 
----
+##### Changes
 
-#INITIAL ANTARES RELEASE
+* Readme.md structure change.
+* Change module name.
+
+##### Fixes
+
+* Change module name with prefix component-
+
+
