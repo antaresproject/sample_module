@@ -16,4 +16,5 @@ $actions     = [
 ];
 $permissions = new RoleActionList;
 $permissions->add(Role::admin()->name, $actions);
+
 return $permissions;

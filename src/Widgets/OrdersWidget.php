@@ -20,9 +20,9 @@
 
 namespace Antares\SampleModule\Widgets;
 
-use Antares\Widgets\Adapter\AbstractWidget;
+use Antares\UI\UIComponents\Adapter\AbstractTemplate;
 
-class OrdersWidget extends AbstractWidget
+class OrdersWidget extends AbstractTemplate
 {
 
     /**

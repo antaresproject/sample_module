@@ -21,10 +21,10 @@
 namespace Antares\Logger\Widgets;
 
 use Antares\SampleModule\Http\Datatables\ModuleDatatable;
-use Antares\Widgets\Templates\DatatablesWidget;
+use Antares\UI\UIComponents\Templates\Datatables;
 use Illuminate\Support\Facades\Route;
 
-class ItemsWidget extends DatatablesWidget
+class ItemsWidget extends Datatables
 {
 
     /**

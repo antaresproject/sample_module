@@ -20,9 +20,9 @@
 
 namespace Antares\SampleModule\Widgets;
 
-use Antares\Widgets\Templates\ChartTemplate;
+use Antares\UI\UIComponents\Templates\Chart;
 
-class GraphBarWidget extends ChartTemplate
+class GraphBarWidget extends Chart
 {
 
     /**
