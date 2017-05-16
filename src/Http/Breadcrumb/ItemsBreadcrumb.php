@@ -18,9 +18,9 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule\Http\Breadcrumb;
+namespace Antares\Modules\SampleModule\Http\Breadcrumb;
 
-use Antares\SampleModule\Model\ModuleRow as Model;
+use Antares\Modules\SampleModule\Model\ModuleRow as Model;
 use Antares\Breadcrumb\Navigation;
 
 class ItemsBreadcrumb extends Navigation

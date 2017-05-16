@@ -20,7 +20,7 @@
 
 namespace Antares\Logger\Widgets;
 
-use Antares\SampleModule\Http\Datatables\ModuleDatatable;
+use Antares\Modules\SampleModule\Http\Datatables\ModuleDatatable;
 use Antares\UI\UIComponents\Templates\Datatables;
 use Illuminate\Support\Facades\Route;
 

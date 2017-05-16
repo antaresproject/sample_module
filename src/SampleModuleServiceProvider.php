@@ -18,13 +18,13 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule;
+namespace Antares\Modules\SampleModule;
 
 use Antares\Foundation\Support\Providers\ModuleServiceProvider;
-use Antares\SampleModule\Http\Handler\ModuleBreadcrumbMenu;
-use Antares\SampleModule\Http\Handler\ModuleMainMenu;
-use Antares\SampleModule\Http\Handler\ModulePaneMenu;
-use Antares\SampleModule\Console\ModuleCommand;
+use Antares\Modules\SampleModule\Http\Handler\ModuleBreadcrumbMenu;
+use Antares\Modules\SampleModule\Http\Handler\ModuleMainMenu;
+use Antares\Modules\SampleModule\Http\Handler\ModulePaneMenu;
+use Antares\Modules\SampleModule\Console\ModuleCommand;
 use Antares\Control\Http\Handlers\ControlPane;
 
 class SampleModuleServiceProvider extends ModuleServiceProvider
@@ -35,7 +35,7 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
      *
      * @var String
      */
-    protected $namespace = 'Antares\SampleModule\Http\Controllers\Admin';
+    protected $namespace = 'Antares\Modules\SampleModule\Http\Controllers\Admin';
 
     /**
      * Nazwa grupy routingu w obrębie której będzie pracował komponent

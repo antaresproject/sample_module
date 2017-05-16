@@ -18,7 +18,7 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule\Model;
+namespace Antares\Modules\SampleModule\Model;
 
 use Antares\Logger\Traits\LogRecorder;
 use Antares\Model\Eloquent;

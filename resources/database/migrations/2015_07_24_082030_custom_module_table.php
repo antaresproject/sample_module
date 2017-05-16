@@ -31,6 +31,7 @@ class CustomModuleTable extends Migration
     {
 
         $this->down();
+
         Schema::create('tbl_custom_module', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index('user_id');

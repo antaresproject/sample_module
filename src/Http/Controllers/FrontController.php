@@ -18,7 +18,7 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule\Http\Controllers;
+namespace Antares\Modules\SampleModule\Http\Controllers;
 
 use Antares\Foundation\Http\Controllers\BaseController;
 

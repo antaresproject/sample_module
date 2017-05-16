@@ -18,10 +18,10 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule\Http\Repositories;
+namespace Antares\Modules\SampleModule\Http\Repositories;
 
 use Antares\Foundation\Repository\AbstractRepository;
-use Antares\SampleModule\Model\ModuleRow;
+use Antares\Modules\SampleModule\Model\ModuleRow;
 
 class ModuleRepository extends AbstractRepository
 {

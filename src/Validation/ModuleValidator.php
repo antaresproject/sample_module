@@ -18,7 +18,7 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule\Validation;
+namespace Antares\Modules\SampleModule\Validation;
 
 use Illuminate\Support\Facades\Validator as ValidatorFacade;
 use Illuminate\Contracts\Validation\Factory;
@@ -37,7 +37,7 @@ class ModuleValidator extends Validator
     public function __construct(Factory $factory, Dispatcher $dispatcher)
     {
         parent::__construct($factory, $dispatcher);
-        ValidatorFacade::extend('customValidation', '\Antares\SampleModule\Validation\ModuleValidator@validateCustomValidation');
+        ValidatorFacade::extend('customValidation', '\Antares\Modules\SampleModule\Validation\ModuleValidator@validateCustomValidation');
     }
 
     /**

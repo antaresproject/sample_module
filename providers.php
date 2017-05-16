@@ -1,5 +1,5 @@
 <?php
 
 return [
-    Antares\SampleModule\SampleModuleServiceProvider::class,
+    Antares\Modules\SampleModule\SampleModuleServiceProvider::class,
 ];

@@ -18,7 +18,7 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\Customfields\Filter;
+namespace Antares\Modules\SampleModule\Filter;
 
 use Yajra\Datatables\Contracts\DataTableScopeContract;
 use Antares\Datatables\Filter\SelectFilter;

@@ -18,7 +18,7 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule\Http\Presenters;
+namespace Antares\Modules\SampleModule\Http\Presenters;
 
 use Antares\Foundation\Http\Presenters\Presenter;
 use Illuminate\Support\Collection;

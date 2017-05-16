@@ -18,7 +18,7 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule\Http\Form;
+namespace Antares\Modules\SampleModule\Http\Form;
 
 use Illuminate\Contracts\Container\Container;
 use Antares\Contracts\Html\Form\Presenter;

@@ -18,13 +18,13 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule\Http\Datatables;
+namespace Antares\Modules\SampleModule\Http\Datatables;
 
-use Antares\SampleModule\Processor\ModuleProcessor;
-use Antares\Customfields\Filter\SecondOptionFilter;
-use Antares\Customfields\Filter\FirstOptionFilter;
+use Antares\Modules\SampleModule\Processor\ModuleProcessor;
+use Antares\Modules\SampleModule\Filter\SecondOptionFilter;
+use Antares\Modules\SampleModule\Filter\FirstOptionFilter;
 use Antares\Datatables\Services\DataTable;
-use Antares\SampleModule\Model\ModuleRow;
+use Antares\Modules\SampleModule\Model\ModuleRow;
 use Illuminate\Support\Facades\Event;
 use Antares\Support\Facades\HTML;
 
@@ -210,7 +210,7 @@ class ModuleDatatable extends DataTable
      */
     protected function users()
     {
-        $rows   = \Antares\SampleModule\Model\ModuleRow::query()->groupBy('user_id')->with('user')->get();
+        $rows   = \Antares\Modules\SampleModule\Model\ModuleRow::query()->groupBy('user_id')->with('user')->get();
         $return = ['' => trans('antares/users::messages.statuses.all')];
         foreach ($rows as $row) {
             $return[$row->user_id] = $row->user->fullname;

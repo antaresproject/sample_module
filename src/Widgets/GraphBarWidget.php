@@ -18,7 +18,7 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule\Widgets;
+namespace Antares\Modules\SampleModule\Widgets;
 
 use Antares\UI\UIComponents\Templates\Chart;
 

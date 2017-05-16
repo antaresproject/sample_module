@@ -18,7 +18,7 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule\Http\Handler;
+namespace Antares\Modules\SampleModule\Http\Handler;
 
 class ModulePlaceholder
 {

@@ -18,7 +18,7 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule\Customfields;
+namespace Antares\Modules\SampleModule\Customfields;
 
 use Antares\Customfield\CustomField;
 
