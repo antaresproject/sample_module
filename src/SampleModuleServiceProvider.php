@@ -113,7 +113,7 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
             $menu->offsetSet('attributes', $attributes);
         });
         $this->app->make('antares.notifications')->push([
-            'antaresproject/component-sample_module' => [
+            'antaresproject/module-sample_module' => [
                 'variables' => [
                     'items' => [
                         'dataProvider' => 'Antares\SampleModule\Model\ModuleRow@items'
@@ -121,7 +121,7 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
                 ]
             ]
         ]);
-        listen('after.activated.antaresproject/component-sample_module', function() {
+        listen('after.activated.antaresproject/module-sample_module', function() {
             \Illuminate\Support\Facades\Artisan::call('automation:sync');
         });
     }
