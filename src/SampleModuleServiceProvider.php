@@ -25,7 +25,7 @@ use Antares\Modules\SampleModule\Http\Handler\ModuleBreadcrumbMenu;
 use Antares\Modules\SampleModule\Http\Handler\ModuleMainMenu;
 use Antares\Modules\SampleModule\Http\Handler\ModulePaneMenu;
 use Antares\Modules\SampleModule\Console\ModuleCommand;
-use Antares\Control\Http\Handlers\ControlPane;
+use Antares\Acl\Http\Handlers\ControlPane;
 
 class SampleModuleServiceProvider extends ModuleServiceProvider
 {

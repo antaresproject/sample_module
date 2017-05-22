@@ -1,4 +1,4 @@
-# Antares Sample Module Component
+# Antares Sample Module
 
 [![Laravel 5.4](https://img.shields.io/badge/Laravel-5.4-orange.svg)](http://laravel.com)
 [![Coverage Status](https://coveralls.io/repos/github/antaresproject/project/badge.svg?branch=master)](https://coveralls.io/github/antaresproject/project?branch=master)
@@ -11,7 +11,7 @@
 
 ## Documentation
 
-Antares Sample Module Component documentation can be found at [antaresproject.io/docs/site/tutorials/sample_module](http://antaresproject.io/docs/site/tutorials/sample_module/index.html).
+Antares Sample Module documentation can be found at [antaresproject.io/docs/site/tutorials/sample_module](http://antaresproject.io/docs/site/tutorials/sample_module/index.html).
 
 Full Antares documentation can be found at [antaresproject.io/docs](http://antaresproject.io/docs).
 
