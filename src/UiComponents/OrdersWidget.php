@@ -63,7 +63,7 @@ class OrdersWidget extends AbstractTemplate
     protected $template = 'empty';
 
     /**
-     * render widget content
+     * Renders widget content
      * 
      * @return String | mixed
      */
@@ -71,7 +71,7 @@ class OrdersWidget extends AbstractTemplate
     {
         app('antares.asset')->container('antares/foundation::application')->add('webpack_view_charts', '/webpack/view_charts.js', ['webpack_gridstack']);
 
-        return view('antares/sample_module::widgets.orders')->render();
+        return view('antares/sample_module::ui_components.orders')->render();
     }
 
 }

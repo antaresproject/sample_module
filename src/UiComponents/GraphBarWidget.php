@@ -18,7 +18,7 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\Modules\SampleModule\Widgets;
+namespace Antares\Modules\SampleModule\UiComponents;
 
 use Antares\UI\UIComponents\Templates\Chart;
 
@@ -80,14 +80,16 @@ class GraphBarWidget extends Chart
     ];
 
     /**
-     * render widget content
+     * Renders ui component content
      * 
      * @return String | mixed
      */
     public function render()
     {
-        app('antares.asset')->container('antares/foundation::application')->add('webpack_view_charts', '/webpack/view_charts.js', ['webpack_gridstack']);
-        return view('antares/sample_module::widgets.graph_4', ['data' => $this->data])->render();
+        app('antares.asset')->container('antares/foundation::application')
+                ->add('webpack_view_charts', '/webpack/view_charts.js', ['webpack_gridstack']);
+
+        return view('antares/sample_module::ui_components.graph_4', ['data' => $this->data])->render();
     }
 
 }

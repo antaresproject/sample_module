@@ -1,0 +1,16 @@
+{% extends 'antares/ui-components::templates.layouts.template' %}
+{% block content %}
+    <div class="card card--info card--padding24">
+        <div class="card__header">
+            <div class="card__header-left">
+                <span>
+                    {{ title }}
+                </span>
+            </div>                       
+        </div>
+        <div class="card__content">
+            <p>This is sample widget template</p>
+            {{ content|raw }}
+        </div>
+    </div>
+{% endblock %}

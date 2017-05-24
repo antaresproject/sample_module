@@ -74,14 +74,14 @@ class ItemsWidget extends Datatables
     }
 
     /**
-     * render widget content
+     * Renders widget content
      * 
      * @return String | mixed
      */
     public function render()
     {
         $table = app(ModuleDatatable::class)->setUser(from_route('user'))->html();
-        return view('antares/sample_module::widgets.items', ['dataTable' => $table]);
+        return view('antares/sample_module::ui_components.items', ['dataTable' => $table]);
     }
 
 }
