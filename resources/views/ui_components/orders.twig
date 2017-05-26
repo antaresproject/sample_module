@@ -1,16 +1,78 @@
-{% extends 'antares/ui-components::templates.layouts.template' %}
-{% block content %}
-    <div class="card card--info card--padding24">
+<div class="card card--chart card--scrollbox" data-chart="true">
+    <div class="card__left">
         <div class="card__header">
             <div class="card__header-left">
-                <span>
-                    {{ title }}
-                </span>
-            </div>                       
+                <span>Graph 2</span>
+            </div>
+            <div class="card__header-right">
+                <form action="" method="post">
+                    <input data-daterangepicker="true" class="mr24">
+                    <input type="checkbox" data-icheck="true" name="check[1]" id="check[3]">
+                    <label class="ml8" for="check[3]">Compare</label>
+                </form>
+            </div>
         </div>
-        <div class="card__content">
-            <p>This is sample widget template</p>
-            {{ content|raw }}
+        <div class="card__content card__content--chart">
+            <div class="chart" id="chart--three">
+                <svg class="lineChart--svg"></svg>
+            </div>
         </div>
     </div>
-{% endblock %}
+    <div class="card__right">
+        <header>
+            <span class="card__title">Total</span>
+            <span class="card__indicator card__indicator--up compare">39%<i class="zmdi zmdi-long-arrow-up"></i></span>
+            <span class="card__ammount"><strong>3215.22</strong><span class="compare"> / 4512.21</span></span>
+            <div class="card__mobile-toggle mdl-js-button mdl-js-ripple-effect">
+                <i class="zmdi zmdi-caret-down"></i>
+            </div>
+        </header>
+        <ul class="datarow">
+            <li class="datarow__sgl datarow__sgl--down">
+                <div class="datarow__left">
+                    <span class="datarow__status">Data 3</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>24</strong><span class="compare">/512</span></span>
+                    <span class="datarow__percentage compare"><span>11%</span><i class="zmdi zmdi-long-arrow-down"></i></span>
+                </div>
+            </li>
+            <li class="datarow__sgl datarow__sgl--up">
+                <div class="datarow__left">
+                    <span class="datarow__status">Data 2</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>32</strong><span class="compare">/125</span></span>
+                    <span class="datarow__percentage compare"><span>33%</span><i class="zmdi zmdi-long-arrow-up"></i></span>
+                </div>
+            </li>
+            <li class="datarow__sgl datarow__sgl--down">
+                <div class="datarow__left">
+                    <span class="datarow__status">Data 2</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>42</strong><span class="compare">/112</span></span>
+                    <span class="datarow__percentage compare"><span>44%</span><i class="zmdi zmdi-long-arrow-down"></i></span>
+                </div>
+            </li>
+            <li class="datarow__sgl datarow__sgl--up">
+                <div class="datarow__left">
+                    <span class="datarow__status">Data 1</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>222</strong><span class="compare">/331</span></span>
+                    <span class="datarow__percentage compare"><span>71%</span><i class="zmdi zmdi-long-arrow-up"></i></span>
+                </div>
+            </li>
+            <li class="datarow__sgl datarow__sgl--up">
+                <div class="datarow__left">
+                    <span class="datarow__status">Data 1</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>221</strong><span class="compare">/598</span></span>
+                    <span class="datarow__percentage compare"><span>36%</span><i class="zmdi zmdi-long-arrow-up"></i></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

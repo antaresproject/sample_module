@@ -18,11 +18,11 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\Modules\SampleModule\Widgets;
+namespace Antares\Modules\SampleModule\UiComponents;
 
-use Antares\UI\UIComponents\Adapter\AbstractTemplate;
+use Antares\UI\UIComponents\Templates\Chart;
 
-class OrdersWidget extends AbstractTemplate
+class OrdersWidget extends Chart
 {
 
     /**
