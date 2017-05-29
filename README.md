@@ -9,6 +9,22 @@
 [![GitHub stars](https://img.shields.io/github/stars/antaresproject/project.svg)](https://github.com/antaresproject/project/stargazers)
 [![GitHub license](https://img.shields.io/badge/license-New%20BSD-blue.svg)](https://raw.githubusercontent.com/antaresproject/project/master/LICENSE)
 
+Antares Sample Module is an example module which can be treated as very first place to start working with Antares. It includes many of samples such as:
+
+- events
+- processors
+- ui components
+- ui templates
+- forms
+- views
+- notifications
+- migrations
+- filters
+
+and much more. It provides sources of [tutorial](http://antaresproject.io/docs/site/tutorials/sample_module/index.html).
+
+![sample_module](docs/img/sample_module.PNG)
+
 ## Documentation
 
 Antares Sample Module documentation can be found at [antaresproject.io/docs/site/tutorials/sample_module](http://antaresproject.io/docs/site/tutorials/sample_module/index.html).
