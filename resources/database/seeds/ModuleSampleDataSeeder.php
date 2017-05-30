@@ -24,6 +24,21 @@ class ModuleSampleDataSeeder extends Seeder
 {
 
     /**
+     * Faker instance
+     *
+     * @var Faker 
+     */
+    protected $faker;
+
+    /**
+     * Construct
+     */
+    public function __construct()
+    {
+        $this->faker = Faker::create();
+    }
+
+    /**
      * Run the database seeding.
      *
      * @return void
@@ -34,21 +49,18 @@ class ModuleSampleDataSeeder extends Seeder
         if (empty($users)) {
             return;
         }
-        $user = $users->first();
-
         $this->down();
-        $faker  = Faker::create();
         $insert = [];
-        for ($i = 0; $i < 2; $i++) {
-            array_push($insert, [
-                'user_id' => $user->id,
-                'name'    => $faker->text(20),
-                'value'   => '{"field_1":"1"}'
-            ]);
+        foreach ($users as $user) {
+            for ($i = 0; $i < 2; $i++) {
+                array_push($insert, $this->createInsert($user->id));
+            }
+        }
+        for ($i = 0; $i < 10; $i++) {
+            $user = $users->random();
+            array_push($insert, $this->createInsert($user->id));
         }
         DB::table('tbl_custom_module')->insert($insert);
-
-
         $widgetParamsSchemaPath = __DIR__ . '/schemas/widget_params.sql';
         if (file_exists($widgetParamsSchemaPath)) {
             DB::unprepared(file_get_contents($widgetParamsSchemaPath));
@@ -56,11 +68,30 @@ class ModuleSampleDataSeeder extends Seeder
     }
 
     /**
-     * delete all database occurences for logger component
+     * Creates insert array
+     * 
+     * @param mixed $uid
+     * @return array
+     */
+    protected function createInsert($uid)
+    {
+        $field1 = rand(1, 2);
+        $field2 = rand(0, 1);
+        return [
+            'user_id' => $uid,
+            'name'    => $this->faker->text(20),
+            'value'   => '{"field_1":"' . $field1 . '","field_2":"' . $field2 . '"}'
+        ];
+    }
+
+    /**
+     * Delete all database occurences from tbl_custom_module
      */
     public function down()
     {
-        
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::table('tbl_custom_module')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 
 }
