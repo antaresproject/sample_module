@@ -1,6 +1,6 @@
 <?php
 
-namespace Antares\SampleModule\Http\Handler;
+namespace Antares\Modules\SampleModule\Http\Handler;
 
 use Antares\Contracts\Auth\Guard;
 use Antares\Foundation\Support\MenuHandler;

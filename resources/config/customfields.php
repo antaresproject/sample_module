@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Part of the Antares Project package.
+ * Part of the Antares package.
  *
  * NOTICE OF LICENSE
  *
@@ -14,7 +14,7 @@
  * @version    0.9.0
  * @author     Antares Team
  * @license    BSD License (3-clause)
- * @copyright  (c) 2017, Antares Project
+ * @copyright  (c) 2017, Antares
  * @link       http://antaresproject.io
  */
 return [
@@ -22,14 +22,14 @@ return [
      * model to field map
      */
     Antares\Model\User::class => [
-        \Antares\Module\Customfields\UrlField::class,
-        \Antares\Module\Customfields\GenderField::class,
-        //\Antares\Module\Customfields\CheckboxField::class,
-        //\Antares\Module\Customfields\RadiosField::class,
-        Antares\Module\Customfields\TextareaField::class
+        \Antares\Modules\SampleModule\Customfields\UrlField::class,
+        \Antares\Modules\SampleModule\Customfields\GenderField::class,
+        //\Antares\Modules\SampleModule\Customfields\CheckboxField::class,
+        //\Antares\Modules\SampleModule\Customfields\RadiosField::class,
+        Antares\Modules\SampleModule\Customfields\TextareaField::class
     ],
     App\User::class           => [
-    //Antares\Module\Customfields\UrlField::class
+    //Antares\Modules\SampleModule\Customfields\UrlField::class
     ]
 ];
 

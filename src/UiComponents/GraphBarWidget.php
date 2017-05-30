@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Part of the Antares Project package.
+ * Part of the Antares package.
  *
  * NOTICE OF LICENSE
  *
@@ -14,15 +14,15 @@
  * @version    0.9.0
  * @author     Antares Team
  * @license    BSD License (3-clause)
- * @copyright  (c) 2017, Antares Project
+ * @copyright  (c) 2017, Antares
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule\Widgets;
+namespace Antares\Modules\SampleModule\UiComponents;
 
-use Antares\Widgets\Templates\ChartTemplate;
+use Antares\UI\UIComponents\Templates\Chart;
 
-class GraphBarWidget extends ChartTemplate
+class GraphBarWidget extends Chart
 {
 
     /**
@@ -80,14 +80,16 @@ class GraphBarWidget extends ChartTemplate
     ];
 
     /**
-     * render widget content
+     * Renders ui component content
      * 
      * @return String | mixed
      */
     public function render()
     {
-        app('antares.asset')->container('antares/foundation::application')->add('webpack_view_charts', '/webpack/view_charts.js', ['webpack_gridstack']);
-        return view('antares/sample_module::widgets.graph_4', ['data' => $this->data])->render();
+        app('antares.asset')->container('antares/foundation::application')
+                ->add('webpack_view_charts', '/webpack/view_charts.js', ['webpack_gridstack']);
+
+        return view('antares/sample_module::ui_components.graph_4', ['data' => $this->data])->render();
     }
 
 }

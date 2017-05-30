@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Part of the Antares Project package.
+ * Part of the Antares package.
  *
  * NOTICE OF LICENSE
  *
@@ -14,17 +14,17 @@
  * @version    0.9.0
  * @author     Antares Team
  * @license    BSD License (3-clause)
- * @copyright  (c) 2017, Antares Project
+ * @copyright  (c) 2017, Antares
  * @link       http://antaresproject.io
  */
 
 namespace Antares\Logger\Widgets;
 
-use Antares\SampleModule\Http\Datatables\ModuleDatatable;
-use Antares\Widgets\Templates\DatatablesWidget;
+use Antares\Modules\SampleModule\Http\Datatables\ModuleDatatable;
+use Antares\UI\UIComponents\Templates\Datatables;
 use Illuminate\Support\Facades\Route;
 
-class ItemsWidget extends DatatablesWidget
+class ItemsWidget extends Datatables
 {
 
     /**
@@ -74,14 +74,14 @@ class ItemsWidget extends DatatablesWidget
     }
 
     /**
-     * render widget content
+     * Renders widget content
      * 
      * @return String | mixed
      */
     public function render()
     {
         $table = app(ModuleDatatable::class)->setUser(from_route('user'))->html();
-        return view('antares/sample_module::widgets.items', ['dataTable' => $table]);
+        return view('antares/sample_module::ui_components.items', ['dataTable' => $table]);
     }
 
 }

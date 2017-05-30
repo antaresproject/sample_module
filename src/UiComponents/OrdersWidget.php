@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Part of the Antares Project package.
+ * Part of the Antares package.
  *
  * NOTICE OF LICENSE
  *
@@ -14,15 +14,15 @@
  * @version    0.9.0
  * @author     Antares Team
  * @license    BSD License (3-clause)
- * @copyright  (c) 2017, Antares Project
+ * @copyright  (c) 2017, Antares
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule\Widgets;
+namespace Antares\Modules\SampleModule\UiComponents;
 
-use Antares\Widgets\Adapter\AbstractWidget;
+use Antares\UI\UIComponents\Templates\Chart;
 
-class OrdersWidget extends AbstractWidget
+class OrdersWidget extends Chart
 {
 
     /**
@@ -63,7 +63,7 @@ class OrdersWidget extends AbstractWidget
     protected $template = 'empty';
 
     /**
-     * render widget content
+     * Renders widget content
      * 
      * @return String | mixed
      */
@@ -71,7 +71,7 @@ class OrdersWidget extends AbstractWidget
     {
         app('antares.asset')->container('antares/foundation::application')->add('webpack_view_charts', '/webpack/view_charts.js', ['webpack_gridstack']);
 
-        return view('antares/sample_module::widgets.orders')->render();
+        return view('antares/sample_module::ui_components.orders')->render();
     }
 
 }

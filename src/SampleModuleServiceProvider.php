@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Part of the Antares Project package.
+ * Part of the Antares package.
  *
  * NOTICE OF LICENSE
  *
@@ -14,18 +14,18 @@
  * @version    0.9.0
  * @author     Antares Team
  * @license    BSD License (3-clause)
- * @copyright  (c) 2017, Antares Project
+ * @copyright  (c) 2017, Antares
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule;
+namespace Antares\Modules\SampleModule;
 
 use Antares\Foundation\Support\Providers\ModuleServiceProvider;
-use Antares\SampleModule\Http\Handler\ModuleBreadcrumbMenu;
-use Antares\SampleModule\Http\Handler\ModuleMainMenu;
-use Antares\SampleModule\Http\Handler\ModulePaneMenu;
-use Antares\SampleModule\Console\ModuleCommand;
-use Antares\Control\Http\Handlers\ControlPane;
+use Antares\Modules\SampleModule\Http\Handler\ModuleBreadcrumbMenu;
+use Antares\Modules\SampleModule\Http\Handler\ModuleMainMenu;
+use Antares\Modules\SampleModule\Http\Handler\ModulePaneMenu;
+use Antares\Modules\SampleModule\Console\ModuleCommand;
+use Antares\Acl\Http\Handlers\ControlPane;
 
 class SampleModuleServiceProvider extends ModuleServiceProvider
 {
@@ -35,7 +35,7 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
      *
      * @var String
      */
-    protected $namespace = 'Antares\SampleModule\Http\Controllers\Admin';
+    protected $namespace = 'Antares\Modules\SampleModule\Http\Controllers\Admin';
 
     /**
      * Nazwa grupy routingu w obrębie której będzie pracował komponent
@@ -113,7 +113,7 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
             $menu->offsetSet('attributes', $attributes);
         });
         $this->app->make('antares.notifications')->push([
-            'antaresproject/component-sample_module' => [
+            'antaresproject/module-sample_module' => [
                 'variables' => [
                     'items' => [
                         'dataProvider' => 'Antares\SampleModule\Model\ModuleRow@items'
@@ -121,7 +121,7 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
                 ]
             ]
         ]);
-        listen('after.activated.antaresproject/component-sample_module', function() {
+        listen('after.activated.antaresproject/module-sample_module', function() {
             \Illuminate\Support\Facades\Artisan::call('automation:sync');
         });
     }

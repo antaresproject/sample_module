@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Part of the Antares Project package.
+ * Part of the Antares package.
  *
  * NOTICE OF LICENSE
  *
@@ -14,21 +14,21 @@
  * @version    0.9.0
  * @author     Antares Team
  * @license    BSD License (3-clause)
- * @copyright  (c) 2017, Antares Project
+ * @copyright  (c) 2017, Antares
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule\Processor;
+namespace Antares\Modules\SampleModule\Processor;
 
-use Antares\SampleModule\Http\Repositories\ModuleRepository;
-use Antares\SampleModule\Http\Datatables\ModuleDatatable;
-use Antares\SampleModule\Http\Presenters\ModulePresenter;
-use Antares\SampleModule\Http\Breadcrumb\ItemsBreadcrumb;
+use Antares\Modules\SampleModule\Http\Repositories\ModuleRepository;
+use Antares\Modules\SampleModule\Http\Datatables\ModuleDatatable;
+use Antares\Modules\SampleModule\Http\Presenters\ModulePresenter;
+use Antares\Modules\SampleModule\Http\Breadcrumb\ItemsBreadcrumb;
 use Antares\Contracts\Html\Form\Grid as FormGrid;
 use Antares\Contracts\Html\Form\Fieldset;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Input;
-use Antares\SampleModule\Model\ModuleRow;
+use Antares\Modules\SampleModule\Model\ModuleRow;
 use Illuminate\Support\Facades\DB;
 use Antares\Model\User;
 
