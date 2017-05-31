@@ -44,6 +44,7 @@ class OrdersWidget extends Chart
         'max_height'     => 20,
         'default_width'  => 6,
         'default_height' => 10,
+        'disabled'       => false,
     ];
 
     /**

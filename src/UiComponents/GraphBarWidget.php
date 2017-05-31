@@ -68,6 +68,7 @@ class GraphBarWidget extends Chart
         'default_width'  => 6,
         'default_height' => 10,
         'enlargeable'    => true,
+        'disabled'       => false,
     ];
 
     /**
