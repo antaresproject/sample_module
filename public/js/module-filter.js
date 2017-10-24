@@ -13,7 +13,7 @@ $(document).ready(function () {
         classname = $(this).parents('.filter-container:first').find('input.classname').attr('value');
         table = $(this).parents('.tbl-c').find('[data-table-init]');
 
-        overlayed.LoadingOverlay('show');
+        //overlayed.LoadingOverlay('show');
         $.ajax({
             url: $('input.datatables-filter-store').val(),
             data: {
@@ -27,11 +27,11 @@ $(document).ready(function () {
             type: 'POST',
             success: function (response) {
                 $('.card-filter').append(response);
-                overlayed.LoadingOverlay('hide');
+                //overlayed.LoadingOverlay('hide');
                 table.dataTable().api().draw();
             },
             error: function (error) {
-                overlayed.LoadingOverlay('hide');
+                //overlayed.LoadingOverlay('hide');
             }
         });
         return false;

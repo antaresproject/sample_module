@@ -8,7 +8,7 @@ $(document).ready(function () {
         var column = from.find('.filter-group-column').val();
         var classname = from.find('.classname').val();
         var container = handler.closest('.ddown-multi__submenu');
-        container.LoadingOverlay('show');
+        //container.LoadingOverlay('show');
         var table = handler.closest('.tbl-c').find('[data-table-init]');
         $.ajax({
             url: $('input.datatables-filter-store').val(),
@@ -24,10 +24,10 @@ $(document).ready(function () {
             success: function (response) {
                 $('.card-filter').append(response);
                 table.dataTable().api().draw();
-                container.LoadingOverlay('hide');
+                //container.LoadingOverlay('hide');
             },
             complete: function () {
-                container.LoadingOverlay('hide');
+                //container.LoadingOverlay('hide');
             }
         });
         return false;
@@ -39,7 +39,7 @@ $(document).ready(function () {
         var self = $(element);
         var table = self.closest('.tbl-c').find('[data-table-init]');
         var newValue = self.closest('form').serializeArray();
-        $ul.LoadingOverlay('show');
+        //$ul.LoadingOverlay('show');
         $.ajax({
             url: $('input.datatables-filter-update').val(),
             data: {
@@ -53,7 +53,7 @@ $(document).ready(function () {
                 table.dataTable().api().draw();
             },
             complete: function (error) {
-                $ul.LoadingOverlay('hide');
+                //$ul.LoadingOverlay('hide');
             }
         });
     }

@@ -1,50 +1,228 @@
-<div class="card card--chart card--scrollbox" data-chart="true">
+<div class="card card--chart card--scrollbox" data-chart="true" data-preload>
     <div class="card__left">
         <div class="card__header">
-            <div class="card__header-left">
-                <span>Number Of Users</span>
-            </div>
+            <div class="card__header-left"><span>Number Of Users</span></div>
             <div class="card__header-right">
                 <form action="" method="post">
+
                     <input data-daterangepicker="true" class="mr24">
-                    <input type="checkbox" data-icheck="true" name="check[1]" id="check[4]">
-                    <label class="ml8" for="check[4]">Compare</label>
+                    <input type="checkbox" data-icheck="true" name="billing" id="billing" class="compare-mode--checkbox">
+                    <label class="ml8" for="billing">Compare</label>
                 </form>
             </div>
         </div>
         <div class="card__content card__content--chart">
-            <div class="chart" id="chart--four">
-                <svg class="lineChart--svg"></svg>
+            <div id="chart--one" class="chart">
+                <!--<svg class="lineChart&#45;&#45;svg"></svg>-->
+                <canvas id="one-line" width="400" height="400"></canvas>
             </div>
         </div>
     </div>
     <div class="card__right">
-        {% set totalFirst=0 %}
-        {% set totalSecond=0 %}
-        {% for name,item in data %}
-            {% set totalFirst=totalFirst+item[0] %}
-            {% set totalSecond=totalSecond+item[1] %}
-        {% endfor %}  
+        <div class="mobile-compare">
+            <input type="checkbox" data-icheck="true" name="check" id="billing" class="compare-mode--checkbox">
+            <label class="ml8" for="billing">Compare</label>
+        </div>
         <header>
-            <span class="card__title">Total</span>
-            <span class="card__indicator card__indicator--down compare">{{ ((totalFirst*100)/totalSecond)|number_format(2, '.', ',')  }}%<i class="zmdi zmdi-long-arrow-down"></i></span>
-            <span class="card__ammount"><strong>{{ totalFirst }}</strong><span class="compare"> / {{ totalSecond }}</span></span>
-            <div class="card__mobile-toggle mdl-js-button mdl-js-ripple-effect">
+            <span class="card__title">New Subscriptions</span>
+            <span class="card__indicator card__indicator--up compare">27%<i
+                    class="zmdi zmdi-long-arrow-up"></i></span>
+            <span class="card__ammount"><strong>$5599.91</strong><span
+                    class="compare"> / $9216.41</span></span>
+
+        </header>
+
+        <ul  data-scrollable class="datarow mobile-toogle--target">
+            <!--SINGLE-->
+            <li class="datarow__sgl datarow__sgl--down">
+                <div class="datarow__left">
+                    <span class="datarow__status">Pending</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>214</strong><span
+                            class="compare">/512</span></span>
+                    <span class="datarow__percentage compare"><span>31%</span>
+                        <i class="zmdi zmdi-long-arrow-down"></i>
+                    </span>
+                </div>
+            </li>
+            <li class="datarow__sgl datarow__sgl--down">
+                <div class="datarow__left">
+                    <span class="datarow__status">Pending</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>214</strong><span
+                            class="compare">/512</span></span>
+                    <span class="datarow__percentage compare"><span>31%</span>
+                        <i class="zmdi zmdi-long-arrow-down"></i>
+                    </span>
+                </div>
+            </li>
+            <li class="datarow__sgl datarow__sgl--down">
+                <div class="datarow__left">
+                    <span class="datarow__status">Pending</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>214</strong><span
+                            class="compare">/512</span></span>
+                    <span class="datarow__percentage compare"><span>31%</span>
+                        <i class="zmdi zmdi-long-arrow-down"></i>
+                    </span>
+                </div>
+            </li>
+            <li class="datarow__sgl datarow__sgl--down">
+                <div class="datarow__left">
+                    <span class="datarow__status">Pending</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>214</strong><span
+                            class="compare">/512</span></span>
+                    <span class="datarow__percentage compare"><span>31%</span>
+                        <i class="zmdi zmdi-long-arrow-down"></i>
+                    </span>
+                </div>
+            </li>
+            <li class="datarow__sgl datarow__sgl--down">
+                <div class="datarow__left">
+                    <span class="datarow__status">Pending</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>214</strong><span
+                            class="compare">/512</span></span>
+                    <span class="datarow__percentage compare"><span>31%</span>
+                        <i class="zmdi zmdi-long-arrow-down"></i>
+                    </span>
+                </div>
+            </li>
+            <li class="datarow__sgl datarow__sgl--down">
+                <div class="datarow__left">
+                    <span class="datarow__status">Pending</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>214</strong><span
+                            class="compare">/512</span></span>
+                    <span class="datarow__percentage compare"><span>31%</span>
+                        <i class="zmdi zmdi-long-arrow-down"></i>
+                    </span>
+                </div>
+            </li>
+            <li class="datarow__sgl datarow__sgl--down">
+                <div class="datarow__left">
+                    <span class="datarow__status">Pending</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>214</strong><span
+                            class="compare">/512</span></span>
+                    <span class="datarow__percentage compare"><span>31%</span>
+                        <i class="zmdi zmdi-long-arrow-down"></i>
+                    </span>
+                </div>
+            </li>
+            <li class="datarow__sgl datarow__sgl--down">
+                <div class="datarow__left">
+                    <span class="datarow__status">Pending</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>214</strong><span
+                            class="compare">/512</span></span>
+                    <span class="datarow__percentage compare"><span>31%</span>
+                        <i class="zmdi zmdi-long-arrow-down"></i>
+                    </span>
+                </div>
+            </li>
+            <li class="datarow__sgl datarow__sgl--down">
+                <div class="datarow__left">
+                    <span class="datarow__status">Pending</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>214</strong><span
+                            class="compare">/512</span></span>
+                    <span class="datarow__percentage compare"><span>31%</span>
+                        <i class="zmdi zmdi-long-arrow-down"></i>
+                    </span>
+                </div>
+            </li>
+            <li class="datarow__sgl datarow__sgl--down">
+                <div class="datarow__left">
+                    <span class="datarow__status">Pending</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>214</strong><span
+                            class="compare">/512</span></span>
+                    <span class="datarow__percentage compare"><span>31%</span>
+                        <i class="zmdi zmdi-long-arrow-down"></i>
+                    </span>
+                </div>
+            </li>
+            <li class="datarow__sgl datarow__sgl--down">
+                <div class="datarow__left">
+                    <span class="datarow__status">Pending</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>214</strong><span
+                            class="compare">/512</span></span>
+                    <span class="datarow__percentage compare"><span>31%</span>
+                        <i class="zmdi zmdi-long-arrow-down"></i>
+                    </span>
+                </div>
+            </li>
+            <!--SINGLE-->
+            <li class="datarow__sgl datarow__sgl--up">
+                <div class="datarow__left">
+                    <span class="datarow__status">Cancelled</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>15</strong><span
+                            class="compare">/161</span></span>
+                    <span class="datarow__percentage compare"><span>11%</span>
+                        <i class="zmdi zmdi-long-arrow-up"></i>
+                    </span>
+                </div>
+            </li>
+            <!--SINGLE-->
+            <li class="datarow__sgl datarow__sgl--up">
+                <div class="datarow__left">
+                    <span class="datarow__status">Accepted</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>61</strong><span
+                            class="compare">/88</span></span>
+                    <span class="datarow__percentage compare"><span>25%</span>
+                        <i class="zmdi zmdi-long-arrow-down"></i>
+                    </span>
+                </div>
+            </li>
+            <!--SINGLE-->
+            <li class="datarow__sgl datarow__sgl--up">
+                <div class="datarow__left">
+                    <span class="datarow__status">Cancelled</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>135</strong><span
+                            class="compare">/198</span></span>
+                    <span class="datarow__percentage compare"><span>21%</span>
+                        <i class="zmdi zmdi-long-arrow-up"></i>
+                    </span>
+                </div>
+            </li>
+            <!--SINGLE-->
+            <li class="datarow__sgl datarow__sgl--down">
+                <div class="datarow__left">
+                    <span class="datarow__status">Error</span>
+                </div>
+                <div class="datarow__right">
+                    <span class="datarow__data"><strong>123</strong><span
+                            class="compare">/187</span></span>
+                    <span class="datarow__percentage compare"><span>66%</span>
+                        <i class="zmdi zmdi-long-arrow-up"></i>
+                    </span>
+                </div>
+            </li>
+        </ul>
+        <div class="mobile-toogle--box">
+            <div class="card__mobile-toggle mdl-js-button mdl-js-ripple-effect" >
                 <i class="zmdi zmdi-caret-down"></i>
             </div>
-        </header>
-        <ul class="datarow">
-            {% for name,item in data %}
-                <li class="datarow__sgl datarow__sgl--down">
-                    <div class="datarow__left">
-                        <span class="datarow__status">{{ name|str_humanize }}</span>
-                    </div>
-                    <div class="datarow__right">
-                        <span class="datarow__data"><strong>{{ item[0] }}</strong><span class="compare">/{{ item[1] }}</span></span>
-                        <span class="datarow__percentage compare"><span>{{ ((item[0]*100)/item[1])|number_format(2, '.', ',')  }}%</span><i class="zmdi zmdi-long-arrow-down"></i></span>
-                    </div>
-                </li>
-            {% endfor %} 
-        </ul>
+        </div>
     </div>
 </div>

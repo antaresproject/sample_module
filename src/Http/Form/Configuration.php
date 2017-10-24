@@ -63,17 +63,16 @@ class Configuration extends FormBuilder implements Presenter
                     $fieldset->control('input:text', 'name')
                             ->label(trans('antares/sample_module::messages.configuration.labels.name'))
                             ->attributes(['placeholder' => trans('antares/sample_module::messages.configuration.placeholders.name')])
-                            ->wrapper(['class' => 'w300']);
+                            ->wrapper(['class' => 'col-mb-16 col-18 col-dt-12 col-ld-7']);
 
                     $fieldset->control('input:text', 'url')
                             ->label(trans('antares/sample_module::messages.configuration.labels.url'))
                             ->attributes(['placeholder' => trans('antares/sample_module::messages.configuration.placeholders.url')])
                             ->fieldClass('input-field--group input-field--pre')
                             ->before('<div class="input-field__pre"><span>' . (request()->secure() ? 'https://' : 'http://') . '</span></div>')
-                            ->wrapper(['class' => 'w400']);
+                            ->wrapper(['class' => 'col-mb-16 col-18 col-dt-12 col-ld-7']);
 
                     $fieldset->control('select', 'date_format')
-                            ->wrapper(['class' => 'w180'])
                             ->label(trans('antares/sample_module::messages.configuration.labels.date_format'))
                             ->options(function() {
                                 return app(DateFormat::class)->query()->get()->pluck('format', 'id');
@@ -103,7 +102,8 @@ class Configuration extends FormBuilder implements Presenter
                     $fieldset->control('ckeditor', 'content')
                             ->label(trans('antares/sample_module::messages.configuration.labels.description'))
                             ->attributes(['scripts' => true, 'class' => 'richtext'])
-                            ->name('content');
+                            ->name('content')
+                            ->wrapper(['class' => 'col-mb-16 col-18 col-dt-20 col-ld-21']);
 
 
                     $fieldset->control('button', 'button')

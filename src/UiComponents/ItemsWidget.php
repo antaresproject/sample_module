@@ -50,12 +50,12 @@ class ItemsWidget extends Datatables
         'titlable'       => false,
         'editable'       => false,
         'nestable'       => false,
-        'min_width'      => 2,
-        'min_height'     => 7,
-        'max_width'      => 12,
+        'min_width'      => 5,
+        'min_height'     => 5,
+        'max_width'      => 24,
         'max_height'     => 52,
         'default_width'  => 10,
-        'default_height' => 25,
+        'default_height' => 18,
         'enlargeable'    => true,
         'titlable'       => true,
         'card_class'     => 'card--logs'
@@ -80,7 +80,10 @@ class ItemsWidget extends Datatables
      */
     public function render()
     {
-        $table = app(ModuleDatatable::class)->setUser(from_route('user'))->html();
+        $table = app(ModuleDatatable::class)
+                ->setUser(from_route('user'))
+                ->html();
+
         return view('antares/sample_module::ui_components.items', ['dataTable' => $table]);
     }
 

@@ -64,9 +64,6 @@ class GenderField extends CustomField
             'placeholder'   => 'select gender...',
             'data-selectar' => true
         ],
-        'wrapper'    => [
-            'class' => 'w200'
-        ],
         'type'       => 'select',
     ];
 

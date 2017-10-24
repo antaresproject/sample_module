@@ -122,20 +122,17 @@ class ModuleProcessor
                                                 })->pluck('title', 'id');
                                     })
                                     ->attributes(['data-selectar--search' => true, 'data-placeholder' => 'testowanie'])
-                                    ->wrapper(['class' => 'w300'])
                                     ->value($model->user_id);
                         }
 
 
                         $fieldset->control('input:text', 'name')
-                                ->label(trans('antares/sample_module::form.name'))
-                                ->wrapper(['class' => 'w300']);
+                                ->label(trans('antares/sample_module::form.name'));
 
 
                         $fieldset->control('select', 'field_1')
                                 ->label(trans('antares/sample_module::form.field_1'))
-                                ->options(self::getOptions())
-                                ->wrapper(['class' => 'w200']);
+                                ->options(self::getOptions());
 
                         $fieldset->control('input:checkbox', 'field_2')
                                 ->label(trans('antares/sample_module::form.field_2'))

@@ -62,11 +62,11 @@ class GraphBarWidget extends Chart
      */
     protected $attributes = [
         'min_width'      => 6,
-        'min_height'     => 10,
-        'max_width'      => 14,
-        'max_height'     => 20,
-        'default_width'  => 6,
-        'default_height' => 10,
+        'min_height'     => 6,
+        'max_width'      => 28,
+        'max_height'     => 40,
+        'default_width'  => 12,
+        'default_height' => 12,
         'enlargeable'    => true,
         'disabled'       => false,
     ];
@@ -87,9 +87,6 @@ class GraphBarWidget extends Chart
      */
     public function render()
     {
-        app('antares.asset')->container('antares/foundation::application')
-                ->add('webpack_view_charts', '/webpack/view_charts.js', ['webpack_gridstack']);
-
         return view('antares/sample_module::ui_components.graph_4', ['data' => $this->data])->render();
     }
 

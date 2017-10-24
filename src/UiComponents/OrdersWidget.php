@@ -38,12 +38,13 @@ class OrdersWidget extends Chart
      * @var array
      */
     protected $attributes = [
-        'min_width'      => 1,
-        'min_height'     => 1,
-        'max_width'      => 14,
-        'max_height'     => 20,
-        'default_width'  => 6,
-        'default_height' => 10,
+        'min_width'      => 2,
+        'min_height'     => 2,
+        'max_width'      => 52,
+        'max_height'     => 52,
+        'default_width'  => 12,
+        'default_height' => 12,
+        'enlargeable'    => true,
         'disabled'       => false,
     ];
 
@@ -70,7 +71,7 @@ class OrdersWidget extends Chart
      */
     public function render()
     {
-        app('antares.asset')->container('antares/foundation::application')->add('webpack_view_charts', '/webpack/view_charts.js', ['webpack_gridstack']);
+        app('antares.asset')->container('antares/foundation::application')->add('webpack_view_charts', '/webpack/view_widgets_html.js', ['webpack_gridstack']);
 
         return view('antares/sample_module::ui_components.orders')->render();
     }
