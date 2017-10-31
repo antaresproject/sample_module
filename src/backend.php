@@ -21,6 +21,7 @@ use Illuminate\Routing\Router;
 
 $router->group(['prefix' => 'sample_module'], function (Router $router) {
     $router->resource('index', 'ModuleController');
+    $router->match(['GET', 'POST'], 'index/{user?}', 'ModuleController@index');
     $router->get('create', 'ModuleController@create');
     $router->match(['GET', 'POST'], 'configuration', 'ModuleController@configuration');
 });

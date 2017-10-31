@@ -77,6 +77,12 @@ class ModuleDatatable extends DataTable
         Event::listen('datatables.order.description', function($query, $direction) {
             $query->orderBy('description', $direction)->orderBy('name', 'desc');
         });
+
+        listen('datatables.order.field_1', function($query, $direction) {
+            return $query;
+        });
+
+
         return $query;
     }
 
@@ -199,8 +205,7 @@ class ModuleDatatable extends DataTable
                         ->addColumn(['data' => 'field_2', 'name' => 'field_2', 'title' => trans('antares/sample_module::datagrid.header.field_2')])
                         ->addAction(['name' => 'edit', 'title' => '', 'class' => 'mass-actions dt-actions'])
                         ->ajax(is_null($url) ? handles('antares::sample_module/index') : $url)
-                        ->addGroupSelect($this->users(), 2, 1)
-                        ->setDeferedData();
+                        ->addGroupSelect($this->users(), 2, 1);
     }
 
     /**

@@ -124,6 +124,9 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
         listen('after.activated.antaresproject/module-sample_module', function() {
             \Illuminate\Support\Facades\Artisan::call('automation:sync');
         });
+        listen('datatables.order.sample_module', function($query, $direction) {
+            return $query;
+        });
     }
 
     /**

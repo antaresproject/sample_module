@@ -56,10 +56,10 @@ class ModuleController extends AdminController
 
     public function index()
     {
-
         $datatable = app(ModuleDatatable::class);
-
-        email_notification('module_email_notification', [user()], []);
+        if (!is_null($user      = from_route('user'))) {
+            $datatable->setUser($user);
+        }
         return $datatable->render('antares/sample_module::admin.module.index');
     }
 
