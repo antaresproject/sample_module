@@ -48,7 +48,7 @@ return
             'item_has_not_been_deleted' => 'Item :name has not been deleted.',
             'item_has_been_deleted'     => 'Item :name has been deleted.',
             'breadcrumb'                => [
-                'item_edit' => 'Edit item :name',
+                'item_edit' => 'Edit: #:id, :name',
                 'item_add'  => 'Add item'
             ]
 ];

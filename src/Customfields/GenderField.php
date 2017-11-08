@@ -65,6 +65,9 @@ class GenderField extends CustomField
             'data-selectar' => true
         ],
         'type'       => 'select',
+        'wrapper'    => [
+            'class' => 'col-mb-16 col-18 col-dt-10 col-ld-2'
+        ]
     ];
 
     public function __construct()

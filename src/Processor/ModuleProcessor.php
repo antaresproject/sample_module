@@ -148,7 +148,9 @@ class ModuleProcessor
                                 ->attributes(['type' => 'submit', 'class' => 'btn btn-primary'])
                                 ->value(trans('antares/foundation::label.save_changes'));
                     });
-                    $form->ajaxable()->rules(['name' => 'required']);
+
+
+                    $form->rules(['name' => 'required']);
                 });
     }
 

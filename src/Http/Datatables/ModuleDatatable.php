@@ -203,9 +203,19 @@ class ModuleDatatable extends DataTable
 
         return $builder->addColumn(['data' => 'field_1', 'name' => 'field_1', 'title' => trans('antares/sample_module::datagrid.header.field_1')])
                         ->addColumn(['data' => 'field_2', 'name' => 'field_2', 'title' => trans('antares/sample_module::datagrid.header.field_2')])
-                        ->addAction(['name' => 'edit', 'title' => '', 'class' => 'mass-actions dt-actions'])
+                        ->addAction(['name' => 'edit', 'title' => '', 'class' => 'mass-actions dt-actions', 'orderable' => false, 'searchable' => false])
                         ->ajax(is_null($url) ? handles('antares::sample_module/index') : $url)
-                        ->addGroupSelect($this->users(), 2, 1);
+                        ->addGroupSelect($this->users(), 2, 1)
+                        ->parameters([
+                            'order'        => [[0, 'desc']],
+                            'aoColumnDefs' => [
+                                ['width' => '6%', 'targets' => 0],
+                                ['width' => '10%', 'targets' => 3],
+                                ['width' => '10%', 'targets' => 4],
+                                ['width' => '3%', 'targets' => 5],
+                            ]
+                        ])
+                        ->zeroDataLink('Create new item', handles('antares::sample_module/index/create'));
     }
 
     /**

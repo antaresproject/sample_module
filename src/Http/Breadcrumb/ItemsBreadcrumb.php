@@ -53,7 +53,7 @@ class ItemsBreadcrumb extends Navigation
     {
         $this->itemsList();
         $this->breadcrumbs->register('item', function($breadcrumbs) use($model) {
-            $name = $model->exists ? trans('antares/sample_module::messages.breadcrumb.item_edit', ['name' => $model->name]) : trans('antares/sample_module::messages.breadcrumb.item_add');
+            $name = $model->exists ? trans('antares/sample_module::messages.breadcrumb.item_edit', ['id' => $model->id, 'name' => $model->name]) : trans('antares/sample_module::messages.breadcrumb.item_add');
             $breadcrumbs->parent(self::$name);
             $breadcrumbs->push($name);
         });
