@@ -33,6 +33,13 @@ class OrdersWidget extends Chart
     public $name = 'Graph 1';
 
     /**
+     * Name of widget
+     * 
+     * @var String 
+     */
+    public $title = 'Graph 1';
+
+    /**
      * widget attributes
      *
      * @var array
@@ -46,6 +53,7 @@ class OrdersWidget extends Chart
         'default_height' => 12,
         'enlargeable'    => true,
         'disabled'       => false,
+        'title'          => 'Graph 1',
     ];
 
     /**

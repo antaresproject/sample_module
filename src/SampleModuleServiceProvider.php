@@ -137,6 +137,7 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
     protected function loadRoutes()
     {
         $this->loadBackendRoutesFrom(__DIR__ . "/backend.php");
+        $this->loadFrontendRoutesFrom(__DIR__ . "/frontend.php");
     }
 
     /**
