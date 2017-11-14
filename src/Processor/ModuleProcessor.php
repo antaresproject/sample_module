@@ -122,22 +122,28 @@ class ModuleProcessor
                                                 })->pluck('title', 'id');
                                     })
                                     ->attributes(['data-selectar--search' => true, 'data-placeholder' => 'testowanie'])
+                                    ->help('Select user to assign new item. This field is required.')
+                                    ->fieldClass('input-field--icon')
+                                    ->prepend('<span class = "input-field__icon"><i class="zmdi zmdi-search"></i></span>')
                                     ->value($model->user_id);
                         }
 
 
                         $fieldset->control('input:text', 'name')
-                                ->label(trans('antares/sample_module::form.name'));
+                                ->label(trans('antares/sample_module::form.name'))
+                                ->help('Name of new item. This field is required.');
 
 
                         $fieldset->control('select', 'field_1')
                                 ->label(trans('antares/sample_module::form.field_1'))
-                                ->options(self::getOptions());
+                                ->options(self::getOptions())
+                                ->help('Select first option of an item. This field is optional.');
 
                         $fieldset->control('input:checkbox', 'field_2')
                                 ->label(trans('antares/sample_module::form.field_2'))
                                 ->value(1)
-                                ->checked($model->exists ? array_get($model->value, 'field_2', false) : false);
+                                ->checked($model->exists ? array_get($model->value, 'field_2', false) : false)
+                                ->help('Select second option of an item. This field is optional.');
 
                         $fieldset->control('button', 'cancel')
                                 ->field(function() {

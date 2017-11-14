@@ -66,11 +66,19 @@ class ItemsBreadcrumb extends Navigation
      */
     public function onConfiguration()
     {
-        $this->breadcrumbs->register('sample-module-configuration', function($breadcrumbs) {
-            $breadcrumbs->push('Sample module configuration');
+        active_menu_route('settings/index');
+
+        $this->breadcrumbs->register('general-config', function($breadcrumbs) {
+            $breadcrumbs->push('General Configuration');
         });
 
-        $this->shareOnView('sample-module-configuration');
+
+        $this->breadcrumbs->register('sample-module', function($breadcrumbs) {
+            $breadcrumbs->parent('general-config');
+            $breadcrumbs->push('Sample module');
+        });
+
+        $this->shareOnView('sample-module');
     }
 
 }

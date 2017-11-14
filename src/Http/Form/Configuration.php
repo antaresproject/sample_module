@@ -63,20 +63,23 @@ class Configuration extends FormBuilder implements Presenter
                     $fieldset->control('input:text', 'name')
                             ->label(trans('antares/sample_module::messages.configuration.labels.name'))
                             ->attributes(['placeholder' => trans('antares/sample_module::messages.configuration.placeholders.name')])
-                            ->wrapper(['class' => 'col-mb-16 col-18 col-dt-12 col-ld-7']);
+                            ->wrapper(['class' => 'col-mb-16 col-18 col-dt-12 col-ld-7'])
+                            ->help('Name of entity. This field is required.');
 
                     $fieldset->control('input:text', 'url')
                             ->label(trans('antares/sample_module::messages.configuration.labels.url'))
                             ->attributes(['placeholder' => trans('antares/sample_module::messages.configuration.placeholders.url')])
                             ->fieldClass('input-field--group input-field--pre')
                             ->before('<div class="input-field__pre"><span>' . (request()->secure() ? 'https://' : 'http://') . '</span></div>')
-                            ->wrapper(['class' => 'col-mb-16 col-18 col-dt-12 col-ld-7']);
+                            ->wrapper(['class' => 'col-mb-16 col-18 col-dt-12 col-ld-7'])
+                            ->help('Url of entity. This field is required.');
 
                     $fieldset->control('select', 'date_format')
                             ->label(trans('antares/sample_module::messages.configuration.labels.date_format'))
                             ->options(function() {
                                 return app(DateFormat::class)->query()->get()->pluck('format', 'id');
-                            });
+                            })
+                            ->help('An example custom field of date control.');
                     $options = app(Country::class)->query()->get()->pluck('name', 'code');
                     $fieldset->control('select', 'default_country')
                             ->label(trans('antares/sample_module::messages.configuration.labels.country'))
@@ -91,10 +94,13 @@ class Configuration extends FormBuilder implements Presenter
                                 }
                                 return $return;
                             })
-                            ->options($options);
+                            ->options($options)
+                            ->help('An example custom field of country control.');
+
                     $checkbox = $fieldset->control('input:checkbox', 'checkbox')
                             ->label(trans('antares/sample_module::messages.configuration.labels.checkbox'))
-                            ->value(1);
+                            ->value(1)
+                            ->help('An example field of checkbox control.');
                     if (array_get($this->grid->row, 'checkbox')) {
                         $checkbox->checked();
                     }
@@ -103,7 +109,8 @@ class Configuration extends FormBuilder implements Presenter
                             ->label(trans('antares/sample_module::messages.configuration.labels.description'))
                             ->attributes(['scripts' => true, 'class' => 'richtext'])
                             ->name('content')
-                            ->wrapper(['class' => 'col-mb-16 col-18 col-dt-20 col-ld-21']);
+                            ->wrapper(['class' => 'col-mb-16 col-18 col-dt-20 col-ld-21'])
+                            ->help('An example field of wysiwyg control.');
 
 
                     $fieldset->control('button', 'button')

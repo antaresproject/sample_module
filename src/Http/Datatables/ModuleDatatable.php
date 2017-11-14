@@ -211,8 +211,7 @@ class ModuleDatatable extends DataTable
                             'aoColumnDefs' => [
                                 ['width' => '6%', 'targets' => 0],
                                 ['width' => '10%', 'targets' => 3],
-                                ['width' => '10%', 'targets' => 4],
-                                ['width' => '3%', 'targets' => 5],
+                                ['width' => '3%', 'targets' => 4],
                             ]
                         ])
                         ->zeroDataLink('Create new item', handles('antares::sample_module/index/create'));
@@ -225,8 +224,15 @@ class ModuleDatatable extends DataTable
      */
     protected function users()
     {
-        $rows   = \Antares\Modules\SampleModule\Model\ModuleRow::query()->groupBy('user_id')->with('user')->get();
-        $return = ['' => trans('antares/users::messages.statuses.all')];
+        $builder = \Antares\Modules\SampleModule\Model\ModuleRow::query()->groupBy('user_id')->with('user');
+        $return  = ['' => trans('antares/users::messages.statuses.all')];
+
+        if (user()->hasRoles(['client', 'member'])) {
+            $builder->where('user_id', user()->id);
+            $return = [];
+        }
+        $rows = $builder->get();
+
         foreach ($rows as $row) {
             $return[$row->user_id] = $row->user->fullname;
         }
