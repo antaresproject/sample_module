@@ -1,13 +1,6 @@
 <h1>Sample Email Template</h1>
 
-<p>[[foreach]]</p>
-
-<p>{% for element in [[ module-sample_module::items ]] %}</p>
-
-<p>{{ element.name }}</p>
-
-<p>{% endfor %}</p>
-
-<p>[[/foreach]]</p>
-
-<p>&nbsp;</p>
+<p>
+    ID: [[ module-sample::moduleRow.id ]]<br>
+    Name: [[ module-sample::moduleRow.name ]]
+</p>
