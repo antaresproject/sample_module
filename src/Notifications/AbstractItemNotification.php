@@ -18,7 +18,7 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule\Notifications;
+namespace Antares\Modules\SampleModule\Notifications;
 
 use Antares\Model\User;
 use Antares\Modules\SampleModule\Model\ModuleRow;

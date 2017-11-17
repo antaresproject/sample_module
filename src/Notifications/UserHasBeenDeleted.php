@@ -18,7 +18,7 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\SampleModule\Notifications;
+namespace Antares\Modules\SampleModule\Notifications;
 
 use Antares\Modules\SampleModule\Events\ItemDeleted;
 use Antares\Notifications\Collections\TemplatesCollection;
@@ -33,7 +33,7 @@ class UserHasBeenDeleted extends AbstractItemNotification {
      */
     public static function templates() : TemplatesCollection {
         return TemplatesCollection::make('Module Item Deleted', ItemDeleted::class)
-            ->define('mail', static::mailMessage());
+            ->define(static::mailMessage());
     }
 
     /**
