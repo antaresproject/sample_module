@@ -11,7 +11,7 @@
  * bundled with this package in the LICENSE file.
  *
  * @package    Module
- * @version    0.9.0
+ * @version    0.9.2
  * @author     Antares Team
  * @license    BSD License (3-clause)
  * @copyright  (c) 2017, Antares
@@ -20,8 +20,13 @@
 
 namespace Antares\Modules\SampleModule\Processor;
 
+use Antares\Modules\SampleModule\Events\ItemCreated;
+use Antares\Modules\SampleModule\Events\ItemDeleted;
+use Antares\Modules\SampleModule\Events\ItemNotCreated;
+use Antares\Modules\SampleModule\Events\ItemNotDeleted;
+use Antares\Modules\SampleModule\Events\ItemNotUpdated;
+use Antares\Modules\SampleModule\Events\ItemUpdated;
 use Antares\Modules\SampleModule\Http\Repositories\ModuleRepository;
-use Antares\Modules\SampleModule\Http\Datatables\ModuleDatatable;
 use Antares\Modules\SampleModule\Http\Presenters\ModulePresenter;
 use Antares\Modules\SampleModule\Http\Breadcrumb\ItemsBreadcrumb;
 use Antares\Contracts\Html\Form\Grid as FormGrid;
@@ -57,9 +62,8 @@ class ModuleProcessor
     protected $breadcrumb;
 
     /**
-     * Konstrukcja procesora
-     * 
-     * @param ModuleDatatable $datatable
+     * ModuleProcessor constructor.
+     * @param ItemsBreadcrumb $breadcrumb
      */
     public function __construct(ItemsBreadcrumb $breadcrumb)
     {
@@ -178,6 +182,7 @@ class ModuleProcessor
     public function store()
     {
         $input      = Input::all();
+        /* @var $user User */
         $user       = auth()->user();
         $attributes = [
             'user_id' => $user->hasRoles('member') ? $user->id : array_get($input, 'user'),
@@ -191,27 +196,31 @@ class ModuleProcessor
             return redirect_with_errors(handles('antares::sample_module/index/create'), $form->getMessageBag());
         }
         if (!$model->save()) {
-            event('notifications.item_has_not_been_created', ['variables' => ['user' => $user, 'item' => $model]]);
+            event(new ItemNotCreated($user, $model));
+
             return redirect_with_message(handles('antares::sample_module/index'), trans('antares/sample_module::messages.save_error'), 'error');
         }
-        event('notifications.item_has_been_created', ['variables' => ['user' => $user, 'item' => $model]]);
+
+        event(new ItemCreated($user, $model));
+
         return redirect_with_message(handles('antares::sample_module/index'), trans('antares/sample_module::messages.save_success'), 'success');
     }
 
     /**
      * When updates form fields in database
      * 
-     * @param mixes $id
+     * @param mixed $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id)
     {
-
+        /* @var $model ModuleRow */
         $model = ModuleRow::withoutGlobalScopes()->findOrFail($id);
         if (!request()->isMethod('put')) {
             $form = $this->form($model);
         } else {
             $input = Input::all();
+            /* @var $user User */
             $user  = auth()->user();
 
             if (!$user->hasRoles('member')) {
@@ -226,10 +235,12 @@ class ModuleProcessor
             }
 
             if (!$model->save()) {
-                event('notifications.item_has_not_been_updated', ['variables' => ['user' => user(), 'item' => $model]]);
+                event(new ItemNotUpdated($user, $model));
+
                 return redirect_with_message(handles('antares::sample_module/index'), trans('antares/sample_module::messages.update_error'), 'error');
             }
-            event('notifications.item_has_been_updated', ['variables' => ['user' => user(), 'item' => $model]]);
+
+            event(new ItemUpdated($user, $model));
 
             return redirect_with_message(handles('antares::sample_module/index'), trans('antares/sample_module::messages.update_success'), 'success');
         }
@@ -246,16 +257,25 @@ class ModuleProcessor
     public function delete($id)
     {
         $builder = ModuleRow::withoutGlobalScopes();
+
+        /* @var $user User */
+        $user = auth()->user();
+
         if (auth()->user()->hasRoles('member')) {
             $builder->where(['user_id' => auth()->user()->id]);
         }
+
+        /* @var $model ModuleRow */
         $model = $builder->findOrFail($id);
         $name  = $model->name;
+
         if ($model->delete()) {
-            event('notifications.item_has_been_deleted', ['variables' => ['user' => user(), 'item' => $model]]);
+            event(new ItemNotDeleted($user, $model));
+
             return redirect_with_message(handles('antares::sample_module/index'), trans('antares/sample_module::messages.item_has_been_deleted', ['name' => $name]), 'success');
         }
-        event('notifications.item_has_not_been_deleted', ['variables' => ['user' => user(), 'item' => $model]]);
+        event(new ItemDeleted($user, $model));
+
         return redirect_with_message(handles('antares::sample_module/index'), trans('antares/sample_module::messages.item_has_not_been_deleted', ['name' => $name]), 'error');
     }
 

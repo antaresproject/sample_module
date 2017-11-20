@@ -18,22 +18,31 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\Modules\SampleModule\Http\Repositories;
+namespace Antares\Modules\SampleModule\Events;
 
-use Antares\Foundation\Repository\AbstractRepository;
+use Antares\Model\User;
 use Antares\Modules\SampleModule\Model\ModuleRow;
 
-class ModuleRepository extends AbstractRepository
-{
+abstract class AbstractItemEvent {
 
-    public function model()
-    {
-        return ModuleRow::class;
-    }
+    /**
+     * @var User
+     */
+    public $user;
 
-    public function findAll()
-    {
-        return $this->makeModel()->get();
+    /**
+     * @var ModuleRow
+     */
+    public $moduleRow;
+
+    /**
+     * AbstractItemEvent constructor.
+     * @param User $user
+     * @param ModuleRow $moduleRow
+     */
+    public function __construct(User $user, ModuleRow $moduleRow) {
+        $this->user = $user;
+        $this->moduleRow = $moduleRow;
     }
 
 }

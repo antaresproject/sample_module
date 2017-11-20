@@ -11,7 +11,7 @@
  * bundled with this package in the LICENSE file.
  *
  * @package    Module
- * @version    0.9.0
+ * @version    0.9.2
  * @author     Antares Team
  * @license    BSD License (3-clause)
  * @copyright  (c) 2017, Antares
@@ -21,11 +21,21 @@
 namespace Antares\Modules\SampleModule;
 
 use Antares\Foundation\Support\Providers\ModuleServiceProvider;
+use Antares\Model\User;
+use Antares\Modules\SampleModule\Events\ItemCreated;
+use Antares\Modules\SampleModule\Events\ItemDeleted;
+use Antares\Modules\SampleModule\Events\ItemNotCreated;
+use Antares\Modules\SampleModule\Events\ItemNotDeleted;
+use Antares\Modules\SampleModule\Events\ItemNotUpdated;
+use Antares\Modules\SampleModule\Events\ItemUpdated;
 use Antares\Modules\SampleModule\Http\Handler\ModuleBreadcrumbMenu;
 use Antares\Modules\SampleModule\Http\Handler\ModuleMainMenu;
 use Antares\Modules\SampleModule\Http\Handler\ModulePaneMenu;
 use Antares\Modules\SampleModule\Console\ModuleCommand;
 use Antares\Acl\Http\Handlers\ControlPane;
+use Antares\Modules\SampleModule\Model\ModuleRow;
+use Antares\Notifications\Helpers\NotificationsEventHelper;
+use Antares\Notifications\Services\VariablesService;
 
 class SampleModuleServiceProvider extends ModuleServiceProvider
 {
@@ -112,21 +122,75 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
             array_set($attributes, 'childs', array_merge($childs, $attributes['childs']));
             $menu->offsetSet('attributes', $attributes);
         });
-        $this->app->make('antares.notifications')->push([
-            'antaresproject/module-sample_module' => [
-                'variables' => [
-                    'items' => [
-                        'dataProvider' => 'Antares\SampleModule\Model\ModuleRow@items'
-                    ],
-                ]
-            ]
-        ]);
+
         listen('after.activated.antaresproject/module-sample_module', function() {
-            \Illuminate\Support\Facades\Artisan::call('automation:sync');
+            \Artisan::call('automation:sync');
+
+            \Artisan::call('notifications:import', [
+                'extension' => 'antaresproject/module-sample_module'
+            ]);
         });
         listen('datatables.order.sample_module', function($query, $direction) {
             return $query;
         });
+    }
+
+    /**
+     * Boot after all extensions booted.
+     */
+    public function booted() {
+        /* @var $notification VariablesService */
+        $notification = app()->make(VariablesService::class);
+
+        /**
+         * Simulates model for notification tests
+         *
+         * @return ModuleRow
+         */
+        $fakedModuleRow = function() {
+            $faker = \Faker\Factory::create();
+            $module = new ModuleRow();
+
+            $module->id = $faker->randomDigitNotNull;
+            $module->name = $faker->text(20);
+
+            return $module;
+        };
+
+        /**
+         * Registers variable of ModuleRow model to the 'module-sample' group with defined attributes.
+         */
+        $notification
+            ->register('module-sample')
+            ->modelDefinition('moduleRow', ModuleRow::class, $fakedModuleRow)
+            ->setAttributes([
+                'id'    => 'ID',
+                'name'  => 'Name',
+            ]);
+
+        $adminRecipient = function() {
+            return User::administrators()->get();
+        };
+
+        NotificationsEventHelper::make()
+            ->event(ItemCreated::class, 'Sample Module', 'When module item is created')
+            ->addAdminRecipient($adminRecipient)
+            ->register()
+            ->event(ItemUpdated::class, 'Sample Module', 'When module item is updated')
+            ->addAdminRecipient($adminRecipient)
+            ->register()
+            ->event(ItemDeleted::class, 'Sample Module', 'When module item is deleted')
+            ->addAdminRecipient($adminRecipient)
+            ->register()
+            ->event(ItemNotCreated::class, 'Sample Module', 'When module item not created')
+            ->addAdminRecipient($adminRecipient)
+            ->register()
+            ->event(ItemNotUpdated::class, 'Sample Module', 'When module item not updated')
+            ->addAdminRecipient($adminRecipient)
+            ->register()
+            ->event(ItemNotDeleted::class, 'Sample Module') // Label will be get from class name and it will be named (in this case) Item Not Deleted.
+            ->addAdminRecipient($adminRecipient)
+            ->register();
     }
 
     /**

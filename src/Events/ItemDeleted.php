@@ -18,22 +18,8 @@
  * @link       http://antaresproject.io
  */
 
-namespace Antares\Modules\SampleModule\Http\Repositories;
+namespace Antares\Modules\SampleModule\Events;
 
-use Antares\Foundation\Repository\AbstractRepository;
-use Antares\Modules\SampleModule\Model\ModuleRow;
-
-class ModuleRepository extends AbstractRepository
-{
-
-    public function model()
-    {
-        return ModuleRow::class;
-    }
-
-    public function findAll()
-    {
-        return $this->makeModel()->get();
-    }
+class ItemDeleted extends AbstractItemEvent {
 
 }
