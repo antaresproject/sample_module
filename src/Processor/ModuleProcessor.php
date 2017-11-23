@@ -110,9 +110,11 @@ class ModuleProcessor
                     $form->name('My Awesome Module Form');
                     $form->resourced('antares::sample_module/index', $model);
                     $form->fieldset(function (Fieldset $fieldset) use($model) {
-
                         $fieldset->legend('Fieldset');
                         if (!auth()->user()->hasRoles('member')) {
+                            if (!is_null($uid = from_route('uid'))) {
+                                $model->user_id = $uid;
+                            }
                             $fieldset->control('select', 'user')
                                     ->label(trans('antares/sample_module::form.user_select'))
                                     ->options(function() {
