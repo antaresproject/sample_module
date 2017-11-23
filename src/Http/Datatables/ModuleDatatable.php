@@ -243,6 +243,9 @@ class ModuleDatatable extends DataTable
         $rows = $builder->get();
 
         foreach ($rows as $row) {
+            if (is_null($row->user)) {
+                continue;
+            }
             $return[$row->user_id] = $row->user->fullname;
         }
         return $return;
