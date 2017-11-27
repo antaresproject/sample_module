@@ -123,13 +123,12 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
             $menu->offsetSet('attributes', $attributes);
         });
 
-        listen('after.activated.antaresproject/module-sample_module', function() {
+        $this->afterActivated('antaresproject/module-sample_module', function() {
             \Artisan::call('automation:sync');
-
-            \Artisan::call('notifications:import', [
-                'extension' => 'antaresproject/module-sample_module'
-            ]);
         });
+
+        $this->importNotifications('antaresproject/module-sample_module');
+
         listen('datatables.order.sample_module', function($query, $direction) {
             return $query;
         });
