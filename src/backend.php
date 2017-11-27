@@ -20,6 +20,7 @@
 use Illuminate\Routing\Router;
 
 $router->group(['prefix' => 'sample_module'], function (Router $router) {
+    $router->get('index/create/{uid?}', 'ModuleController@create');
     $router->resource('index', 'ModuleController');
     $router->match(['GET', 'POST'], 'index/{user?}', 'ModuleController@index');
     $router->get('create', 'ModuleController@create');

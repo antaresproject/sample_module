@@ -19,7 +19,7 @@
  */
 return
         [
-            'configuration'             => [
+            'configuration'                => [
                 'labels'       => [
                     'name'        => 'Name',
                     'url'         => 'Url',
@@ -33,22 +33,23 @@ return
                     'url'  => 'entity url...',
                 ]
             ],
-            'title'                     => 'Sample module',
-            'user_updated'              => 'User has been updated.',
-            'delete'                    => 'Delete',
-            'are_you_sure'              => 'Are you sure?',
-            'delete_item'               => 'Deleteing item :name',
-            'delete_mass_action'        => 'Are you sure, to delete selected rows?',
-            'edit'                      => 'Edit',
-            'save_error'                => 'Item has not been added. Error appears while saving to database.',
-            'save_success'              => 'Item has been added.',
-            'update_error'              => 'Item has not been updated. Error appears while saving to database.',
-            'update_success'            => 'Item has been updated.',
-            'deleting_row'              => 'Deleting item :name...',
-            'item_has_not_been_deleted' => 'Item :name has not been deleted.',
-            'item_has_been_deleted'     => 'Item :name has been deleted.',
-            'breadcrumb'                => [
+            'title'                        => 'Sample module',
+            'user_updated'                 => 'User has been updated.',
+            'delete'                       => 'Delete',
+            'are_you_sure'                 => 'Are you sure?',
+            'delete_item'                  => 'Deleteing item :name',
+            'delete_mass_action'           => 'Are you sure, to delete selected rows?',
+            'edit'                         => 'Edit',
+            'save_error'                   => 'Item has not been added. Error appears while saving to database.',
+            'save_success'                 => 'Item has been added.',
+            'update_error'                 => 'Item has not been updated. Error appears while saving to database.',
+            'update_success'               => 'Item has been updated.',
+            'deleting_row'                 => 'Deleting item :name...',
+            'item_has_not_been_deleted'    => 'Item :name has not been deleted.',
+            'item_has_been_deleted'        => 'Item :name has been deleted.',
+            'breadcrumb'                   => [
                 'item_edit' => 'Edit: #:id, :name',
                 'item_add'  => 'Add item'
-            ]
+            ],
+            'configuration_has_been_saved' => 'Configuration has been saved.'
 ];

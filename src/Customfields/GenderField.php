@@ -89,9 +89,9 @@ class GenderField extends CustomField
      */
     public function onSave(Model $user)
     {
-//        $model        = $this->getModel($user);
-//        $model->value = input('gender');
-//        return $model->save();
+        $model        = $this->getModel($user);
+        $model->value = input('gender');
+        return $model->save();
     }
 
     /**

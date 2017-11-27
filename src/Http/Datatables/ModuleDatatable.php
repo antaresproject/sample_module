@@ -201,8 +201,16 @@ class ModuleDatatable extends DataTable
         }
 
 
-        return $builder->addColumn(['data' => 'field_1', 'name' => 'field_1', 'title' => trans('antares/sample_module::datagrid.header.field_1')])
-                        ->addColumn(['data' => 'field_2', 'name' => 'field_2', 'title' => trans('antares/sample_module::datagrid.header.field_2')])
+        return $builder->addColumn([
+                            'data'      => 'field_1',
+                            'name'      => 'field_1',
+                            'title'     => trans('antares/sample_module::datagrid.header.field_1'),
+                            'className' => 'tabletV tabletH laptop desktop',
+                        ])
+                        ->addColumn(['data'      => 'field_2', 'name'      => 'field_2',
+                            'title'     => trans('antares/sample_module::datagrid.header.field_2'),
+                            'className' => 'tabletV tabletH laptop desktop',
+                        ])
                         ->addAction(['name' => 'edit', 'title' => '', 'class' => 'mass-actions dt-actions', 'orderable' => false, 'searchable' => false])
                         ->ajax(is_null($url) ? handles('antares::sample_module/index') : $url)
                         ->addGroupSelect($this->users(), 2, 1)
@@ -212,6 +220,7 @@ class ModuleDatatable extends DataTable
                                 ['width' => '6%', 'targets' => 0],
                                 ['width' => '10%', 'targets' => 3],
                                 ['width' => '3%', 'targets' => 4],
+                                ['width' => '1%', 'targets' => 5],
                             ]
                         ])
                         ->zeroDataLink('Create new item', handles('antares::sample_module/index/create'));
@@ -234,6 +243,9 @@ class ModuleDatatable extends DataTable
         $rows = $builder->get();
 
         foreach ($rows as $row) {
+            if (is_null($row->user)) {
+                continue;
+            }
             $return[$row->user_id] = $row->user->fullname;
         }
         return $return;

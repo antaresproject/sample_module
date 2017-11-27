@@ -109,18 +109,18 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
         });
         view()->composer('antares/sample_module::admin.configuration', ControlPane::class);
         listen('antares.ready: menu.after.general-settings', ModulePaneMenu::class);
+
         listen('breadcrumb.before.render.user-view', function($menu) {
             $attributes = $menu->getAttributes();
             $childs     = [
                 'sample-module-user' => new \Antares\Support\Fluent([
                     "icon"   => 'zmdi-plus',
-                    "link"   => handles('antares::sample_module/index/create'),
+                    "link"   => handles('antares::sample_module/index/create/' . from_route('user')),
                     "title"  => 'Add Item (Sample Module)',
                     "id"     => 'sample-module-add',
                     "childs" => []])
             ];
-            array_set($attributes, 'childs', array_merge($childs, $attributes['childs']));
-            $menu->offsetSet('attributes', $attributes);
+            $menu->offsetSet('childs', array_merge($childs, $attributes['childs']));
         });
 
         $this->afterActivated('antaresproject/module-sample_module', function() {
@@ -137,7 +137,8 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
     /**
      * Boot after all extensions booted.
      */
-    public function booted() {
+    public function booted()
+    {
         /* @var $notification VariablesService */
         $notification = app()->make(VariablesService::class);
 
@@ -147,10 +148,10 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
          * @return ModuleRow
          */
         $fakedModuleRow = function() {
-            $faker = \Faker\Factory::create();
+            $faker  = \Faker\Factory::create();
             $module = new ModuleRow();
 
-            $module->id = $faker->randomDigitNotNull;
+            $module->id   = $faker->randomDigitNotNull;
             $module->name = $faker->text(20);
 
             return $module;
@@ -160,36 +161,36 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
          * Registers variable of ModuleRow model to the 'module-sample' group with defined attributes.
          */
         $notification
-            ->register('module-sample')
-            ->modelDefinition('moduleRow', ModuleRow::class, $fakedModuleRow)
-            ->setAttributes([
-                'id'    => 'ID',
-                'name'  => 'Name',
-            ]);
+                ->register('module-sample')
+                ->modelDefinition('moduleRow', ModuleRow::class, $fakedModuleRow)
+                ->setAttributes([
+                    'id'   => 'ID',
+                    'name' => 'Name',
+        ]);
 
         $adminRecipient = function() {
             return User::administrators()->get();
         };
 
         NotificationsEventHelper::make()
-            ->event(ItemCreated::class, 'Sample Module', 'When module item is created')
-            ->addAdminRecipient($adminRecipient)
-            ->register()
-            ->event(ItemUpdated::class, 'Sample Module', 'When module item is updated')
-            ->addAdminRecipient($adminRecipient)
-            ->register()
-            ->event(ItemDeleted::class, 'Sample Module', 'When module item is deleted')
-            ->addAdminRecipient($adminRecipient)
-            ->register()
-            ->event(ItemNotCreated::class, 'Sample Module', 'When module item not created')
-            ->addAdminRecipient($adminRecipient)
-            ->register()
-            ->event(ItemNotUpdated::class, 'Sample Module', 'When module item not updated')
-            ->addAdminRecipient($adminRecipient)
-            ->register()
-            ->event(ItemNotDeleted::class, 'Sample Module') // Label will be get from class name and it will be named (in this case) Item Not Deleted.
-            ->addAdminRecipient($adminRecipient)
-            ->register();
+                ->event(ItemCreated::class, 'Sample Module', 'When module item is created')
+                ->addAdminRecipient($adminRecipient)
+                ->register()
+                ->event(ItemUpdated::class, 'Sample Module', 'When module item is updated')
+                ->addAdminRecipient($adminRecipient)
+                ->register()
+                ->event(ItemDeleted::class, 'Sample Module', 'When module item is deleted')
+                ->addAdminRecipient($adminRecipient)
+                ->register()
+                ->event(ItemNotCreated::class, 'Sample Module', 'When module item not created')
+                ->addAdminRecipient($adminRecipient)
+                ->register()
+                ->event(ItemNotUpdated::class, 'Sample Module', 'When module item not updated')
+                ->addAdminRecipient($adminRecipient)
+                ->register()
+                ->event(ItemNotDeleted::class, 'Sample Module') // Label will be get from class name and it will be named (in this case) Item Not Deleted.
+                ->addAdminRecipient($adminRecipient)
+                ->register();
     }
 
     /**

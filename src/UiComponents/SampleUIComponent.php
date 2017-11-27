@@ -20,12 +20,12 @@ class SampleUIComponent extends SampleUIComponentTemplate
      * @var array
      */
     protected $attributes = [
-        'min_width'      => 1,
-        'min_height'     => 1,
+        'min_width'      => 6,
+        'min_height'     => 14,
         'max_width'      => 14,
         'max_height'     => 20,
         'default_width'  => 6,
-        'default_height' => 10,
+        'default_height' => 14,
     ];
 
     /**
