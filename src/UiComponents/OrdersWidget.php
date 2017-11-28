@@ -37,7 +37,7 @@ class OrdersWidget extends Chart
      * 
      * @var String 
      */
-    public $title = 'Graph 1';
+    public $title = 'Graph 2';
 
     /**
      * widget attributes
@@ -53,7 +53,10 @@ class OrdersWidget extends Chart
         'default_height' => 12,
         'enlargeable'    => true,
         'disabled'       => false,
-        'title'          => 'Graph 1',
+        'title'          => 'Graph 2',
+        'desktop'        => [12, 0, 12, 12],
+        'tablet'         => [12, 0, 12, 12],
+        'mobile'         => [12, 0, 12, 12]
     ];
 
     /**

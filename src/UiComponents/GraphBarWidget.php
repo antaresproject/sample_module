@@ -37,7 +37,7 @@ class GraphBarWidget extends Chart
      * 
      * @var String 
      */
-    public $title = 'Graph 2';
+    public $title = 'Graph 1';
 
     /**
      * Widget data
@@ -69,6 +69,9 @@ class GraphBarWidget extends Chart
         'default_height' => 12,
         'enlargeable'    => true,
         'disabled'       => false,
+        'desktop'        => [0, 0, 12, 12],
+        'tablet'         => [0, 0, 12, 12],
+        'mobile'         => [0, 0, 12, 14]
     ];
 
     /**
