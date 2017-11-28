@@ -88,9 +88,10 @@ class SampleModuleServiceProvider extends ModuleServiceProvider
         listen('datatables:admin/users/index:after.status', function($datatables) {
             if ($datatables instanceof \Antares\Datatables\Html\Builder) {
                 $datatables->collection->push(new \Yajra\Datatables\Html\Column([
-                    'data'  => 'sample_module',
-                    'name'  => 'sample_module',
-                    'title' => 'Sample Module Items'
+                    'data'      => 'sample_module',
+                    'name'      => 'sample_module',
+                    'title'     => 'Sample Module Items',
+                    'className' => 'bolded tabletV tabletH laptop desktop',
                 ]));
             }
         });
