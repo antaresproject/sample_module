@@ -71,7 +71,7 @@ class GraphBarWidget extends Chart
         'disabled'       => false,
         'desktop'        => [0, 0, 12, 12],
         'tablet'         => [0, 0, 12, 12],
-        'mobile'         => [0, 0, 12, 14]
+        'mobile'         => [0, 0, 12, 12]
     ];
 
     /**

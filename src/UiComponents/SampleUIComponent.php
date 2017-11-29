@@ -21,11 +21,15 @@ class SampleUIComponent extends SampleUIComponentTemplate
      */
     protected $attributes = [
         'min_width'      => 6,
-        'min_height'     => 14,
-        'max_width'      => 14,
-        'max_height'     => 20,
+        'min_height'     => 6,
+        'max_width'      => 52,
+        'max_height'     => 52,
+        'x'              => 0,
+        'y'              => 12,
         'default_width'  => 6,
-        'default_height' => 14,
+        'default_height' => 6,
+        'tablet'         => [0, 24, 24, 6],
+        'mobile'         => [0, 24, 24, 6]
     ];
 
     /**

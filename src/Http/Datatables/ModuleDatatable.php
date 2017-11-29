@@ -235,11 +235,12 @@ class ModuleDatatable extends DataTable
     {
         $builder = \Antares\Modules\SampleModule\Model\ModuleRow::query()->groupBy('user_id')->with('user');
         $return  = ['' => trans('antares/users::messages.statuses.all')];
-
-        if (user()->hasRoles(['client', 'member'])) {
-            $builder->where('user_id', user()->id);
+        $uid     = (user()->hasRoles(['client', 'member'])) ? user()->id : from_route('user');
+        if (!is_null($uid)) {
             $return = [];
+            $builder->where('user_id', $uid);
         }
+
         $rows = $builder->get();
 
         foreach ($rows as $row) {
