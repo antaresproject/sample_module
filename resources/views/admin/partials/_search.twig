@@ -13,9 +13,4 @@
             <div class="flex-block__desc">#{{ user_id }}, {{ user.fullname|raw }}</div>
         {% endif %}
     </div>
-    <div class="flex-block__badge">
-        {% if user_id %}
-            {{ user_status(user)|raw }}
-        {% endif %}
-    </div>
 </div>
