@@ -29,7 +29,8 @@ class SampleUIComponent extends SampleUIComponentTemplate
         'default_width'  => 6,
         'default_height' => 6,
         'tablet'         => [0, 24, 24, 6],
-        'mobile'         => [0, 24, 24, 6]
+        'mobile'         => [0, 24, 24, 6],
+        'autoresize'     => true
     ];
 
     /**

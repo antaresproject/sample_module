@@ -83,7 +83,7 @@ class OrdersWidget extends Chart
     public function render()
     {
         //http:?t=801
-        app('antares.asset')->container('antares/foundation::application')->add('webpack_view_charts', '//10.10.10.35:71/js/view_widgets_html.js', ['webpack_gridstack']);
+        app('antares.asset')->container('antares/foundation::application')->add('webpack_view_charts', '/_dist/js/view_widgets_html.js', ['webpack_gridstack']);
 
         return view('antares/sample_module::ui_components.orders')->render();
     }

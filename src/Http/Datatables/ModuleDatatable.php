@@ -70,7 +70,6 @@ class ModuleDatatable extends DataTable
         }
 
         $query = ModuleRow::withoutGlobalScopes()->select(['id', 'name', 'user_id', 'value'])->with('user');
-
         if (!is_null($this->userId)) {
             $query->where('user_id', $this->userId);
         }
@@ -220,7 +219,6 @@ class ModuleDatatable extends DataTable
                                 ['width' => '6%', 'targets' => 0],
                                 ['width' => '10%', 'targets' => 3],
                                 ['width' => '3%', 'targets' => 4],
-                                ['width' => '1%', 'targets' => 5],
                             ]
                         ])
                         ->zeroDataLink('Create new item', handles('antares::sample_module/index/create'));
