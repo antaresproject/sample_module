@@ -10,7 +10,7 @@
     <div class="flex-block__content">
         <span class="flex-block__title">{{ id|raw }} {{ name|slice(0, 30) ~ '...'|raw  }}</span>
         {% if user_id %}
-            <div class="flex-block__desc">#{{ user_id }}, {{ user.fullname|raw }}</div>
+            <div class="flex-block__desc">#{{ user.id }}, {{ user.fullname|raw }}</div>
         {% endif %}
     </div>
 </div>

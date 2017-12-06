@@ -260,4 +260,14 @@ class ModuleDatatable extends DataTable
         return handles('antares::sample_module/index/{id}/edit');
     }
 
+    /**
+     * Checks whether user has access to view datatable
+     * 
+     * @return boolean
+     */
+    public function authorize()
+    {
+        return app('antares.acl')->make('antares/sample_module')->can('items-list');
+    }
+
 }
