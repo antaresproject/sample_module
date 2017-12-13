@@ -73,6 +73,7 @@ class GraphBarWidget extends Chart
         'tablet'         => [0, 0, 12, 12],
         'mobile'         => [0, 0, 12, 12]
     ];
+    protected $view       = 'antares/sample_module::ui_components.graph_4';
 
     /**
      * Where widget should be disabled 
@@ -90,7 +91,7 @@ class GraphBarWidget extends Chart
      */
     public function render()
     {
-        return view('antares/sample_module::ui_components.graph_4', ['data' => $this->data])->render();
+        return view($this->view, ['data' => $this->data])->render();
     }
 
 }
