@@ -60,6 +60,7 @@ class ItemsWidget extends Datatables
         'titlable'       => true,
         'card_class'     => 'card--logs'
     ];
+    protected $view       = 'antares/sample_module::ui_components.items';
 
     /**
      * widget routes definition
@@ -85,7 +86,7 @@ class ItemsWidget extends Datatables
                 ->setUser($uid)
                 ->html(handles('antares::sample_module/index/' . $uid));
 
-        return view('antares/sample_module::ui_components.items', ['dataTable' => $table]);
+        return view($this->view, ['dataTable' => $table]);
     }
 
 }
